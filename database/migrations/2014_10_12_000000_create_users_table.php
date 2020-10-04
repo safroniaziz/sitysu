@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('nama');
             $table->char('nip', 18);
             $table->string('password');
-            $table->enum('jk', ['l', 'p']);
-            $table->string('alamat');
-            $table->string('no_hp', 15);
-            $table->string('foto_profil');
+            $table->enum('jk', ['l', 'p'])->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('no_hp', 15)->nullable();
+            $table->string('foto_profil')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
