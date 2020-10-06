@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', 'Admin\AdminController@index')->name('home');
+Auth::routes(['register' => false]);
+
+Route::middleware(['auth', 'checkRole:admin,dosen,staf'])->group(function () {
+    Route::get('/beranda', 'BerandaController@index')->name('beranda');
 });
 
-Auth::routes(['register' => false,]);
+Route::middleware(['auth', 'checkRole:admin,dosen'])->group(function () {
+    Route::get('/', 'Admin\AdminController@index')->name('home');
+});

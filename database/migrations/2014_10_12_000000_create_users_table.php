@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nama');
             $table->char('nip', 18);
             $table->string('password');
+            $table->enum('role', ['dosen', 'staf', 'admin']);
             $table->enum('jk', ['l', 'p'])->nullable();
             $table->string('alamat')->nullable();
             $table->string('no_hp', 15)->nullable();
