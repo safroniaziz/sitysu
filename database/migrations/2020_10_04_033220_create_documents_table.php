@@ -18,7 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->string('nama_surat');
             $table->string('no_surat');
-            $table->string('penadatangan');
+            $table->string('penandatangan');
             $table->date('ditetapkan');
             $table->string('file');
             $table->enum('jenis_surat', ['t', 'k']);

@@ -16,17 +16,6 @@
 
             <h4>Input Surat Tugas</h4>
 
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-
-
             <div class="widget-content widget-content-area br-6">
                 <div class="mb-4">
 
@@ -40,6 +29,11 @@
                                         <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="application/pdf/*" name="file">
                                         <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                                         <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                        @error('file')
+                                            <div class="mt-2 text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </label>
                                     <div class="custom-file-container__image-preview"></div>
                                 </div>
@@ -49,20 +43,40 @@
                                     <div class="form-group col-md-12">
                                         <label for="nama_surat">Nama Surat</label>
                                         <input type="text" class="form-control" id="nama_surat" placeholder="Surat Pernyataan..." name="nama_surat">
+                                        @error('nama_surat')
+                                            <div class="mt-2 text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="no_surat">Nomor Surat</label>
                                         <input type="text" class="form-control" id="no_surat" placeholder="1298390183" name="no_surat">
+                                        @error('no_surat')
+                                            <div class="mt-2 text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="penandatangan">Penandatangan</label>
                                         <input type="text" class="form-control" id="penandatangan" placeholder="Wahyu Syahputra" name="penandatangan">
+                                        @error('penandatangan')
+                                            <div class="mt-2 text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6 mb-5">
                                         <label for="basicFlatpickr">Ditetapkan</label>
-                                        <input id="basicFlatpickr" value="2019-09-04" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="ditetapkan">
+                                        <input id="basicFlatpickr" value="2020-01-01" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="ditetapkan">
+                                        @error('ditetapkan')
+                                            <div class="mt-2 text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6 mb-5">
                                         <label for="jenis_surat">Jenis Surat</label>
@@ -71,6 +85,11 @@
                                             <option value="k">Surat Keterangan</option>
                                             <option value="t">Surat Tugas</option>
                                         </select>
+                                        @error('jenis_surat')
+                                            <div class="mt-2 text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-12 mt-5 text-right">
                                         <button type="submit" class="btn btn-primary">Simpan</button>
