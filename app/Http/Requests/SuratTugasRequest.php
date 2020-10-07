@@ -26,7 +26,7 @@ class SuratTugasRequest extends FormRequest
         return [
             'file' => 'required|mimes:pdf,docx,dox',
             'nama_surat' => 'required',
-            'no_surat' => 'required',
+            'no_surat' => 'required|unique:documents',
             'penandatangan' => 'required',
             'ditetapkan' => 'required',
             'jenis_surat' => 'required',
@@ -40,6 +40,7 @@ class SuratTugasRequest extends FormRequest
             'mimes.required' => 'Format file wajib pdf, docx,doc',
             'nama_surat.required' => 'Nama surat wajib diisi',
             'no_surat.required' => 'Nomor surat wajib diisi',
+            'no_surat.unique' => 'Nomor surat sudah ada',
             'penandatangan.required' => 'Penandatangan wajib diisi',
             'ditetapkan.required' => 'Form ini wajib diisi',
             'jenis_surat.required' => 'Jenis surat wajib diisi',

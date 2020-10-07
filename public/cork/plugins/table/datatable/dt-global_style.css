@@ -238,8 +238,50 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     cursor: pointer;
 }
 
-.table-hover:not(.table-dark) tbody tr:hover .table-cancel {
+.table-success {
+    color: #888ea8;
+    margin-right: 6px;
+    vertical-align: middle;
+    fill: rgba(0, 23, 55, 0.08);
+    cursor: pointer;
+    background: none;
+}
+
+.table-info {
+    color: #888ea8;
+    margin-right: 6px;
+    vertical-align: middle;
+    fill: rgba(0, 23, 55, 0.08);
+    cursor: pointer;
+    background: none;
+}
+
+.table-primary {
+    color: #888ea8;
+    margin-right: 6px;
+    vertical-align: middle;
+    fill: rgba(0, 23, 55, 0.08);
+    cursor: pointer;
+    background: none;
+}
+
+.table-hover:not(.table-dark) tbody tr td a:hover .table-cancel {
     color: #e7515a;
+}
+
+.table-hover:not(.table-dark) tbody tr td a:hover .table-success {
+    color: #8dbf42;
+    background: none;
+}
+
+.table-hover:not(.table-dark) tbody tr td a:hover .table-info {
+    color: #2196f3;
+    background: none;
+}
+
+.table-hover:not(.table-dark) tbody tr td a:hover .table-primary {
+    color: #1b55e2;
+    background: none;
 }
 
 @media all and (-ms-high-contrast: none),

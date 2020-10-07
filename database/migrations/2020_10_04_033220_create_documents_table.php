@@ -17,7 +17,7 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('nama_surat');
-            $table->string('no_surat');
+            $table->string('no_surat')->unique();
             $table->string('penandatangan');
             $table->date('ditetapkan');
             $table->string('file');

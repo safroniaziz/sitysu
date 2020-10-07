@@ -12,7 +12,9 @@ class SuratTugasController extends Controller
 {
     public function index()
     {
-        return view('pages.surat-tugas.index');
+        $documents = Document::latest()->get();
+
+        return view('pages.surat-tugas.index', compact('documents'));
     }
 
     public function create()
@@ -31,5 +33,12 @@ class SuratTugasController extends Controller
         Document::create($data);
 
         return redirect()->route('surat.tugas')->with('success', 'Lorem ipsum dolor sit amet.');
+    }
+
+    public function edit($no_surat)
+    {
+        $document = Document::where('no_surat', $no_surat)->first();
+
+        return view('pages.surat-tugas.edit', compact('document'));
     }
 }
