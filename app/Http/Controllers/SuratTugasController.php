@@ -6,6 +6,8 @@ use App\Http\Requests\SuratTugasRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class SuratTugasController extends Controller
 {
     public function index()
@@ -28,6 +30,6 @@ class SuratTugasController extends Controller
 
         Document::create($data);
 
-        return redirect()->back();
+        return redirect()->route('surat.tugas')->with('success', 'Lorem ipsum dolor sit amet.');
     }
 }
