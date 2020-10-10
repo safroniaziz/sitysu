@@ -27,7 +27,7 @@ Route::middleware(['auth', 'checkRole:admin,staf'])->group(function () {
     Route::post('/surat-tugas/store', 'SuratTugasController@store')->name('surat.tugas.store');
 
     Route::get('/surat-tugas/{no_surat}/edit', 'SuratTugasController@edit')->name('surat.tugas.edit');
-    Route::get('/surat-tugas/{id}/update', 'SuratTugasController@update')->name('surat.tugas.update');
+    Route::patch('/surat-tugas/{id}/update', 'SuratTugasController@update')->name('surat.tugas.update');
 
     // Surat Keterangan
     Route::get('/surat-keterangan', 'SuratKeteranganController@index')->name('surat.keterangan');

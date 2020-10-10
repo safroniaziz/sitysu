@@ -18,6 +18,16 @@
 
             <h4>Input Surat Tugas</h4>
 
+            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
             <div class="widget-content widget-content-area br-6">
                 <div class="mb-4">
 
@@ -28,7 +38,7 @@
                             <div class="col-xl-3">
                                 <div class="custom-file-container" data-upload-id="myFirstImage">
                                     <label>Dokumen Elektronik</label>
-                                <input type="file" id="input-file-max-fs" class="dropify" data-default-file="{{ asset($document->file) }}" data-max-file-size="2M" data-height="300" data-allowed-file-extensions="pdf doc docx" />
+                                    <input name="file" type="file" id="input-file-max-fs" class="dropify" data-default-file="{{ asset($document->file) }}" data-max-file-size="2M" data-height="300" data-allowed-file-extensions="pdf doc docx" />
                                 </div>
                             </div>
                             <div class="col-xl-9">

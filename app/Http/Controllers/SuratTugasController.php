@@ -41,4 +41,12 @@ class SuratTugasController extends Controller
 
         return view('pages.surat-tugas.edit', compact('document'));
     }
+
+    public function update(SuratTugasRequest $request, $id)
+    {
+        $surat = Document::where('id', $id)->first();
+        $no_surat = $surat->no_surat;
+
+        dd($request->validated());
+    }
 }
