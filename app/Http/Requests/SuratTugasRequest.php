@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SuratTugasRequest extends FormRequest
 {
@@ -23,14 +24,28 @@ class SuratTugasRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'file' => 'required|mimes:pdf,docx,dox',
-            'nama_surat' => 'required',
-            'no_surat' => 'required|unique:documents',
-            'penandatangan' => 'required',
-            'ditetapkan' => 'required',
-            'jenis_surat' => 'required',
-        ];
+        if ($this->id) {
+            return [
+                'file' => 'required|mimes:pdf,docx,dox',
+                'nama_surat' => 'required',
+                'no_surat' => [
+                    'required',
+                    Rule::unique('documents', 'no_surat')->ignore($this->id)
+                ],
+                'penandatangan' => 'required',
+                'ditetapkan' => 'required',
+                'jenis_surat' => 'required',
+            ];
+        } else {
+            return [
+                'file' => 'required|mimes:pdf,docx,dox',
+                'nama_surat' => 'required',
+                'no_surat' => 'required|unique:documents',
+                'penandatangan' => 'required',
+                'ditetapkan' => 'required',
+                'jenis_surat' => 'required',
+            ];
+        }
     }
 
     public function messages()

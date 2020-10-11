@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSuratTugasRequest;
 use App\Http\Requests\SuratTugasRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
@@ -45,8 +46,9 @@ class SuratTugasController extends Controller
     public function update(SuratTugasRequest $request, $id)
     {
         $surat = Document::where('id', $id)->first();
-        $no_surat = $surat->no_surat;
 
-        dd($request->validated());
+        $surat->save($request->validated());
+
+        return redirect()->route('surat.tugas')->with('success', 'Berhasil Update Data.');
     }
 }
