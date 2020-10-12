@@ -13,9 +13,7 @@ class SuratTugasController extends Controller
 {
     public function index()
     {
-        $documents = Document::latest()->get();
-
-        return view('pages.surat-tugas.index', compact('documents'));
+        return view('pages.surat-tugas.index');
     }
 
     public function create()
@@ -50,5 +48,12 @@ class SuratTugasController extends Controller
         $surat->save($request->validated());
 
         return redirect()->route('surat.tugas')->with('success', 'Berhasil Update Data.');
+    }
+
+    public function detail($no_surat)
+    {
+        $document = Document::where('no_surat', $no_surat)->first();
+
+        return view('pages.surat-tugas.detail', compact('document'));
     }
 }

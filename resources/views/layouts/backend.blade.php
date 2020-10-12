@@ -13,6 +13,8 @@
     @include('inc.backend.style')
     @stack('style-after')
 
+    <livewire:styles>
+
 </head>
 <body>
     <!-- BEGIN LOADER -->
@@ -50,5 +52,6 @@
 
     @include('sweetalert::alert')
 
+    <livewire:scripts>
 </body>
 </html>
