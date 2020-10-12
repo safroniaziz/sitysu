@@ -10,4 +10,6 @@
     });
 </script>
 <script src="{{ asset('cork/assets/js/custom.js') }}"></script>
+
+<script src="{{ asset('cork/plugins/sweetalerts2/sweetalert2.all.min.js') }}"></script>
 <!-- END GLOBAL MANDATORY SCRIPTS -->
