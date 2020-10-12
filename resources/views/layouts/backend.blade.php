@@ -50,8 +50,6 @@
     @include('inc.backend.script')
     @stack('script-after')
 
-    @include('sweetalert::alert')
-
     <livewire:scripts>
 </body>
 </html>

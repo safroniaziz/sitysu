@@ -6,8 +6,6 @@ use App\Http\Requests\SuratTugasRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
 
-use RealRashid\SweetAlert\Facades\Alert;
-
 class SuratTugasController extends Controller
 {
     public function index()

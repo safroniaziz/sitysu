@@ -165,7 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -231,7 +230,6 @@ return [
         /*
          * Package Service Aliases...
          */
-        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ],
 
 ];
