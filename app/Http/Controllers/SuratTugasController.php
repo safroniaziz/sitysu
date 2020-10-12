@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSuratTugasRequest;
 use App\Http\Requests\SuratTugasRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
@@ -27,11 +26,12 @@ class SuratTugasController extends Controller
 
         $nama_file = $request->file->getClientOriginalName();
         $file = $request->file->storeAs('surat-tugas', $nama_file);
+        $data['jenis_surat'] = 't';
         $data['file'] = $file;
 
         Document::create($data);
 
-        return redirect()->route('surat.tugas')->with('success', 'Lorem ipsum dolor sit amet.');
+        return redirect()->route('surat.tugas')->with('success', 'Data Berhasil Dimasukkan');
     }
 
     public function edit($no_surat)

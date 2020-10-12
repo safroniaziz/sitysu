@@ -1,6 +1,4 @@
 <div>
-    <button class="btn btn-primary" wire:click="test">coba</button>
-
     <table id="default-ordering" class="table table-hover" style="width:100%">
         <thead>
             <tr class="text-center">

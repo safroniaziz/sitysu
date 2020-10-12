@@ -34,7 +34,6 @@ class SuratTugasRequest extends FormRequest
                 ],
                 'penandatangan' => 'required',
                 'ditetapkan' => 'required',
-                'jenis_surat' => 'required',
             ];
         } else {
             return [
@@ -43,7 +42,6 @@ class SuratTugasRequest extends FormRequest
                 'no_surat' => 'required|unique:documents',
                 'penandatangan' => 'required',
                 'ditetapkan' => 'required',
-                'jenis_surat' => 'required',
             ];
         }
     }
@@ -58,7 +56,6 @@ class SuratTugasRequest extends FormRequest
             'no_surat.unique' => 'Nomor surat sudah ada',
             'penandatangan.required' => 'Penandatangan wajib diisi',
             'ditetapkan.required' => 'Form ini wajib diisi',
-            'jenis_surat.required' => 'Jenis surat wajib diisi',
         ];
     }
 }

@@ -18,6 +18,16 @@
 
             <h4>Input Surat Tugas</h4>
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="widget-content widget-content-area br-6">
                 <div class="mb-4">
 
@@ -52,7 +62,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
                                         <label for="penandatangan">Penandatangan</label>
                                         <input type="text" class="form-control" id="penandatangan" placeholder="Wahyu Syahputra" name="penandatangan">
                                         @error('penandatangan')
@@ -65,19 +75,6 @@
                                         <label for="basicFlatpickr">Ditetapkan</label>
                                         <input id="basicFlatpickr" value="2020-01-01" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="ditetapkan">
                                         @error('ditetapkan')
-                                        <div class="mt-2 text-danger">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6 mb-5">
-                                        <label for="jenis_surat">Jenis Surat</label>
-                                        <select name="jenis_surat" id="jenis_surat" class="form-control">
-                                            <option value="">Pilih Jenis Surat ...</option>
-                                            <option value="k">Surat Keterangan</option>
-                                            <option value="t">Surat Tugas</option>
-                                        </select>
-                                        @error('jenis_surat')
                                         <div class="mt-2 text-danger">
                                             {{ $message }}
                                         </div>
