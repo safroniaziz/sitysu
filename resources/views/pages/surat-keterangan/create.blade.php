@@ -16,26 +16,25 @@
 
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
-            <h4>Edit Surat Tugas</h4>
+            <h4>Input Surat Keterangan</h4>
 
             <div class="widget-content widget-content-area br-6">
                 <div class="mb-4">
 
-                    <form action="{{ route('surat.tugas.update', $document->id) }}" method="POST" enctype="multipart/form-data">
-                        @method('patch')
+                    <form action="{{ route('surat.keterangan.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-xl-3">
                                 <div class="custom-file-container" data-upload-id="myFirstImage">
                                     <label>Dokumen Elektronik</label>
-                                    <input name="file" type="file" id="input-file-max-fs" class="dropify" data-default-file="{{ asset($document->file) }}" data-max-file-size="2M" data-height="300" data-allowed-file-extensions="pdf doc docx" />
+                                    <input name="file" type="file" id="input-file-max-fs" class="dropify" data-default-file="{{ asset('cork/assets/img/upload-dokumen.png') }}" data-max-file-size="2M" data-height="300" data-allowed-file-extensions="pdf doc docx" />
                                 </div>
                             </div>
                             <div class="col-xl-9">
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="nama_surat">Nama Surat</label>
-                                        <input type="text" class="form-control" id="nama_surat" placeholder="Surat Pernyataan..." name="nama_surat" value="{{ $document->nama_surat }}">
+                                        <input type="text" class="form-control" id="nama_surat" placeholder="Surat Pernyataan..." name="nama_surat">
                                         @error('nama_surat')
                                         <div class="mt-2 text-danger">
                                             {{ $message }}
@@ -44,7 +43,7 @@
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="no_surat">Nomor Surat</label>
-                                        <input type="text" class="form-control" id="no_surat" placeholder="1298390183" name="no_surat" value="{{ $document->no_surat }}">
+                                        <input type="text" class="form-control" id="no_surat" placeholder="1298390183" name="no_surat">
                                         @error('no_surat')
                                         <div class="mt-2 text-danger">
                                             {{ $message }}
@@ -55,7 +54,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="penandatangan">Penandatangan</label>
-                                        <input type="text" class="form-control" id="penandatangan" placeholder="Wahyu Syahputra" name="penandatangan" value="{{ $document->penandatangan }}">
+                                        <input type="text" class="form-control" id="penandatangan" placeholder="Wahyu Syahputra" name="penandatangan">
                                         @error('penandatangan')
                                         <div class="mt-2 text-danger">
                                             {{ $message }}
@@ -64,7 +63,7 @@
                                     </div>
                                     <div class="form-group col-md-6 mb-5">
                                         <label for="basicFlatpickr">Ditetapkan</label>
-                                        <input id="basicFlatpickr" value="2020-01-01" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="ditetapkan" value="{{ $document->ditetapkan }}">
+                                        <input id="basicFlatpickr" value="2020-01-01" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="ditetapkan">
                                         @error('ditetapkan')
                                         <div class="mt-2 text-danger">
                                             {{ $message }}

@@ -33,4 +33,12 @@ Route::middleware(['auth', 'checkRole:admin,staf'])->group(function () {
 
     // Surat Keterangan
     Route::get('/surat-keterangan', 'SuratKeteranganController@index')->name('surat.keterangan');
+
+    Route::get('/surat-keterangan/create', 'SuratKeteranganController@create')->name('surat.keterangan.create');
+    Route::post('/surat-keterangan/store', 'SuratKeteranganController@store')->name('surat.keterangan.store');
+
+    Route::get('/surat-keterangan/{no_surat}/edit', 'SuratKeteranganController@edit')->name('surat.keterangan.edit');
+    Route::patch('/surat-keterangan/{id}/update', 'SuratKeteranganController@update')->name('surat.keterangan.update');
+
+    Route::get('/surat-keterangan/{no_surat}/detail', 'SuratKeteranganController@detail')->name('surat.keterangan.detail');
 });

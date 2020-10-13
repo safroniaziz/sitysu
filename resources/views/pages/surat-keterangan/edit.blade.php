@@ -16,12 +16,12 @@
 
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
-            <h4>Edit Surat Tugas</h4>
+            <h4>Edit Surat Keterangan</h4>
 
             <div class="widget-content widget-content-area br-6">
                 <div class="mb-4">
 
-                    <form action="{{ route('surat.tugas.update', $document->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('surat.keterangan.update', $document->id) }}" method="POST" enctype="multipart/form-data">
                         @method('patch')
                         @csrf
                         <div class="row">

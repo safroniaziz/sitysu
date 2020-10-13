@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\SuratTugas;
+namespace App\Http\Livewire\SuratKeterangan;
 
 use Livewire\Component;
 use App\Models\Document;
@@ -23,25 +23,16 @@ class DataTable extends Component
 
     public $search = '';
 
-    public function openModal($data)
-    {
-        $this->nama_surat = $data['nama_surat'];
-        $this->no_surat = $data['no_surat'];
-        $this->id_surat = $data['id'];
-
-        $this->dispatchBrowserEvent('openSuratTugasDeleteModal');
-    }
-
     public function render()
     {
         $documents = Document::query()
             ->search($this->search)
             ->orderBy($this->sortBy, $this->sortDirection)
             ->WhereBetween('ditetapkan', [$this->from, $this->to])
-            ->where('jenis_surat', 't')
+            ->where('jenis_surat', 'k')
             ->paginate(10);
 
-        return view('livewire.surat-tugas.data-table', compact('documents'));
+        return view('livewire.surat-keterangan.data-table', compact('documents'));
     }
 
     public function remove($id_surat)
@@ -76,5 +67,14 @@ class DataTable extends Component
             $this->from = $dataFilter[0];
             $this->to = $dataFilter[1];
         }
+    }
+
+    public function openModal($data)
+    {
+        $this->nama_surat = $data['nama_surat'];
+        $this->no_surat = $data['no_surat'];
+        $this->id_surat = $data['id'];
+
+        $this->dispatchBrowserEvent('openSuratTugasDeleteModal');
     }
 }

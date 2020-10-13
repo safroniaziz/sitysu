@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SuratTugasRequest;
+use App\Http\Requests\SuratRequest;
 use App\Models\Document;
-use Illuminate\Http\Request;
 
 class SuratTugasController extends Controller
 {
@@ -18,7 +17,7 @@ class SuratTugasController extends Controller
         return view('pages.surat-tugas.create');
     }
 
-    public function store(SuratTugasRequest $request)
+    public function store(SuratRequest $request)
     {
         $data = $request->validated();
 
@@ -39,7 +38,7 @@ class SuratTugasController extends Controller
         return view('pages.surat-tugas.edit', compact('document'));
     }
 
-    public function update(SuratTugasRequest $request, $id)
+    public function update(SuratRequest $request, $id)
     {
         $surat = Document::where('id', $id)->first();
 
