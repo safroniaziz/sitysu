@@ -15,11 +15,11 @@
     <link href="{{ asset('cork/plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('cork/plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('cork/plugins/bootstrap-range-Slider/bootstrap-slider.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('cork/assets/css/elements/alert.css') }}">
     <!--  END CUSTOM STYLE FILE  -->
 
     <!--  BEGIN MYSTYLES  -->
     <link href="{{ asset('custom/css/main.css') }}" rel="stylesheet" type="text/css" />
-    {{-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> --}}
     <script src="https://kit.fontawesome.com/b6d19992bf.js" crossorigin="anonymous"></script>
     <!--  END MYSTYLES  -->
 @endpush

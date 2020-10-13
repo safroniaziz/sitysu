@@ -1,15 +1,16 @@
 <div>
     <div class="d-flex justify-content-between">
-        <div class="data-table-filter mb-2 col-md-6 col-sm-4">
-            <div class="d-flex">
-                <input id="rangeCalendarFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Urutkan...">
-            </div>
-        </div>
         <div class="data-table-filter mb-2 col-md-6 col-sm-8">
+            <div class="d-flex">
             <label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 <input wire:model.debounce.300ms="search" type="text" class="form-control" placeholder="Cari...">
             </label>
+        </div>
+        </div>
+        <div class="data-table-filter mb-2 col-md-6 col-sm-4">
+            <input id="rangeCalendarFlatpickr" class="form-control flatpickr flatpickr-input active mr-3" type="text" placeholder="Pilih Tanggal..." wire:model="filter">
+            <button class="btn btn-primary mb-1" style="width: 95px; height: 45px;" wire:click="getFilterData">Urutkan</button>
         </div>
     </div>
 
@@ -42,7 +43,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($documents as $document)
+            @forelse ($documents as $document)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $document->nama_surat }}</td>
@@ -62,7 +63,15 @@
                     </a>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="7" class="text-center">
+                    <div class="alert alert-outline-danger" role="alert">
+                        <strong>Error!</strong> Data yang anda cari tidak ditemukan.
+                    </div>
+                </td>
+            </tr>
+            @endforelse
         </tbody>
     </table>
 

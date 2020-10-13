@@ -13,7 +13,10 @@ class DataTable extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $modalDocument;
-    public $nama_surat, $no_surat, $id_surat;
+    public $nama_surat, $no_surat, $id_surat, $filter;
+
+    public $from = '1500-01-01';
+    public $to = '2200-01-01';
 
     public $sortBy = 'created_at';
     public $sortDirection = 'desc';
@@ -34,6 +37,7 @@ class DataTable extends Component
         $documents = Document::query()
             ->search($this->search)
             ->orderBy($this->sortBy, $this->sortDirection)
+            ->WhereBetween('ditetapkan', [$this->from, $this->to])
             ->paginate(10);
 
         return view('livewire.surat-tugas.data-table', compact('documents'));
@@ -60,5 +64,16 @@ class DataTable extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function getFilterData()
+    {
+        if ($this->filter) {
+            $data = $this->filter;
+            $dataFilter = explode(" to ", $data);
+
+            $this->from = $dataFilter[0];
+            $this->to = $dataFilter[1];
+        }
     }
 }
