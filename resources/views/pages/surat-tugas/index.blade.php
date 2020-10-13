@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('cork/plugins/table/datatable/dt-global_style.css') }}">
     <!-- END PAGE LEVEL STYLES -->
 
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="{{ asset('cork/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+
+
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link href="{{ asset('cork/assets/css/components/custom-modal.css') }}" rel="stylesheet" type="text/css" />
     <!--  END CUSTOM STYLE FILE  -->
@@ -18,12 +23,14 @@
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
             <div class="d-flex">
+
+                <div id="flash-data" data-flashdata="{{ session()->get('success') }}"></div>
+
                 <h4 class="mr-2">Surat Tugas</h4>
                 <a href="{{ route('surat.tugas.create') }}" class="align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2a03f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                 </a>
 
-                <button class="btn btn-primary" id="tombol" onclick="Swal.fire('hello world', 'testing', 'success')">Sweet Alert</button>
             </div>
 
             <div class="widget-content widget-content-area br-6">
@@ -53,6 +60,17 @@
         window.addEventListener('openSuratTugasDeleteModal', event => {
             $("#deleteSuratTugasModal").modal('show');
         })
+
+        window.addEventListener('swalDeleted', event => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Surat Tugas Berhasil Dihapus',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+            })
+        })
     </script>
 
     <script src="{{ asset('cork/plugins/table/datatable/datatables.js') }}"></script>
@@ -72,5 +90,7 @@
             drawCallback: function () { $('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered mb-5'); }
 	    } );
     </script>
+
+    <script src="{{ asset('custom/js/myscript.js') }}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
 @endpush

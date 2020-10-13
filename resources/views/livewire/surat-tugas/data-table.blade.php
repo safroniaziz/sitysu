@@ -36,14 +36,14 @@
         </tbody>
     </table>
 
-    <div wire:ignore.self class="modal fade modal-notification" id="deleteSuratTugasModal" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal animated zoomInUp custo-zoomInUp" id="deleteSuratTugasModal" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document" id="standardModalLabel">
             <div class="modal-content">
                 <div class="modal-body text-center">
                     <div class="icon-content">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
                     </div>
-                    <h4 class="modal-text">Apakah anda yakin ingin menghapus data ini?</h4>
+                    <h4 class="modal-text mt-3">Apakah anda yakin ingin menghapus data ini?</h4>
                     <div class="d-flex justify-content-center mt-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         <h6 class="text-muted ml-1">{{ $nama_surat }}</h6>
@@ -52,8 +52,8 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button class="btn btn-primary" data-dismiss="modal" wire:click="closeModal"><i class="flaticon-cancel-12"></i> Tidak</button>
-                    <button type="button" class="btn btn-danger" wire:click="remove">Ya</button>
+                    <button class="btn btn-primary" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Tidak</button>
+                    <button type="button" class="btn btn-danger" wire:click="remove({{ $id_surat }})">Ya</button>
                 </div>
             </div>
         </div>

@@ -29,7 +29,7 @@ class SuratTugasController extends Controller
 
         Document::create($data);
 
-        return redirect()->route('surat.tugas')->with('success', 'Data Berhasil Dimasukkan');
+        return redirect()->route('surat.tugas')->with('success', 'Berhasil Dimasukkan.');
     }
 
     public function edit($no_surat)
@@ -45,7 +45,7 @@ class SuratTugasController extends Controller
 
         $surat->save($request->validated());
 
-        return redirect()->route('surat.tugas')->with('success', 'Berhasil Update Data.');
+        return redirect()->route('surat.tugas')->with('success', 'Berhasil Diubah.');
     }
 
     public function detail($no_surat)
