@@ -10,10 +10,18 @@
     <link href="{{ asset('cork/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
 
-
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link href="{{ asset('cork/assets/css/components/custom-modal.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('cork/plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('cork/plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('cork/plugins/bootstrap-range-Slider/bootstrap-slider.css') }}" rel="stylesheet" type="text/css">
     <!--  END CUSTOM STYLE FILE  -->
+
+    <!--  BEGIN MYSTYLES  -->
+    <link href="{{ asset('custom/css/main.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> --}}
+    <script src="https://kit.fontawesome.com/b6d19992bf.js" crossorigin="anonymous"></script>
+    <!--  END MYSTYLES  -->
 @endpush
 
 @section('content')
@@ -34,7 +42,7 @@
             </div>
 
             <div class="widget-content widget-content-area br-6">
-                <div class="table-responsive mb-4 mt-4">
+                <div class="table-responsive mb-4 mt-4" style="overflow-x: hidden;">
 
                     <livewire:surat-tugas.data-table>
 
@@ -74,7 +82,7 @@
     </script>
 
     <script src="{{ asset('cork/plugins/table/datatable/datatables.js') }}"></script>
-    <script>
+    {{-- <script>
         $('#default-ordering').DataTable( {
             "oLanguage": {
                 "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
@@ -89,6 +97,16 @@
             "pageLength": 7,
             drawCallback: function () { $('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered mb-5'); }
 	    } );
+    </script> --}}
+
+
+    <script src="{{ asset('cork/plugins/flatpickr/flatpickr.js') }}"></script>
+    <script src="{{ asset('cork/plugins/flatpickr/custom-flatpickr.js') }}"></script>
+
+    <script>
+        flatpickr(document.getElementById('rangeCalendarFlatpickr'), {
+            mode: "range"
+        });
     </script>
 
     <script src="{{ asset('custom/js/myscript.js') }}"></script>

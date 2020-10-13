@@ -1,12 +1,42 @@
 <div>
-    <table id="default-ordering" class="table table-hover" style="width:100%">
+    <div class="d-flex justify-content-between">
+        <div class="data-table-filter mb-2 col-md-6 col-sm-4">
+            <div class="d-flex">
+                <input id="rangeCalendarFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Urutkan...">
+            </div>
+        </div>
+        <div class="data-table-filter mb-2 col-md-6 col-sm-8">
+            <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input wire:model.debounce.300ms="search" type="text" class="form-control" placeholder="Cari...">
+            </label>
+        </div>
+    </div>
+
+    <table id="default-ordering" class="table table-hover" style="width:100%;">
         <thead>
             <tr class="text-center">
                 <th>#</th>
-                <th>Nama Surat</th>
-                <th>Nomor Surat</th>
-                <th>Penandatangan</th>
-                <th>Ditetapkan</th>
+                <th wire:click="sortBy('nama_surat')" style="cursor: pointer;">
+                    Nama Surat
+
+                    @include('partials._sort-icon', ['field' => 'nama_surat'])
+                </th>
+                <th wire:click="sortBy('no_surat')" style="cursor: pointer;">
+                    Nomor Surat
+
+                    @include('partials._sort-icon', ['field' => 'no_surat'])
+                </th>
+                <th wire:click="sortBy('penandatangan')" style="cursor: pointer;">
+                    Penandatangan
+
+                    @include('partials._sort-icon', ['field' => 'penandatangan'])
+                </th>
+                <th wire:click="sortBy('ditetapkan')" style="cursor: pointer;">
+                    Ditetapkan
+
+                    @include('partials._sort-icon', ['field' => 'ditetapkan'])
+                </th>
                 <th>E-Doc</th>
                 <th>Aksi</th>
             </tr>
@@ -35,6 +65,12 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="d-flex justify-content-center">
+        <p>
+            {{ $documents->links() }}
+        </p>
+    </div>
 
     <div wire:ignore.self class="modal animated zoomInUp custo-zoomInUp" id="deleteSuratTugasModal" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document" id="standardModalLabel">

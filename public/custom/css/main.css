@@ -1,0 +1,38 @@
+/* .data-table-filter svg {
+    position: absolute;
+    top: 15px;
+    right: 14px;
+    width: 20px;
+    color: #d3d3d3;
+} */
+
+.data-table-filter {
+    text-align: right;
+    margin-right: 15px;
+}
+
+.data-table-filter label {
+    position: relative;
+    font-size: 15px;
+}
+
+.data-table-filter svg {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 20px;
+    color: #d3d3d3;
+}
+
+.data-table-filter input {
+    width: 300px;
+    margin-left: 0.5em;
+    display: inline-block;
+    border: none;
+    margin-top: 5px;
+    -webkit-box-shadow: 2px 5px 17px 0 rgba(31, 45, 61, 0.1);
+    box-shadow: 2px 5px 17px 0 rgba(31, 45, 61, 0.1);
+    border-radius: 6px;
+    border: 1px solid #e0e6ed;
+    padding: 8px 30px 8px 14px;
+}
