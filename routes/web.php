@@ -42,3 +42,13 @@ Route::middleware(['auth', 'checkRole:admin,staf'])->group(function () {
 
     Route::get('/surat-keterangan/{no_surat}/detail', 'SuratKeteranganController@detail')->name('surat.keterangan.detail');
 });
+
+Route::middleware(['auth', 'checkRole:admin'])->group(function () {
+    Route::get('/manajemen-user', 'ManajemenUserController@index')->name('manajemen.user');
+
+    Route::get('/manajemen-user/create', 'ManajemenUserController@create')->name('manajemen.user.create');
+    Route::post('/manajemen-user/store', 'ManajemenUserController@store')->name('manajemen.user.store');
+
+    Route::get('/manajemen-user/{user}/edit', 'ManajemenUserController@edit')->name('manajemen.user.edit');
+    Route::patch('/manajemen-user/{user}/update', 'ManajemenUserController@update')->name('manajemen.user.update');
+});

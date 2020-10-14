@@ -17,3 +17,13 @@ if (keterangan) {
         text: keterangan,
     })
 }
+
+const user = $('#flash-data').data('user');
+
+if (user) {
+    Swal.fire({
+        icon: 'success',
+        title: 'Data User',
+        text: user,
+    })
+}

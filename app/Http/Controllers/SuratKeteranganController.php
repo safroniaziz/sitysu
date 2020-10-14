@@ -42,7 +42,7 @@ class SuratKeteranganController extends Controller
     {
         $surat = Document::where('id', $id)->first();
 
-        $surat->save($request->validated());
+        $surat->update($request->validated());
 
         return redirect()->route('surat.keterangan')->with('success', 'Berhasil Diubah.');
     }

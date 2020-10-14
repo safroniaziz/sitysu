@@ -17,9 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nama', 'nip_nidn', 'role', 'password',
     ];
 
     /**
@@ -40,4 +38,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeSearch($query, $val)
+    {
+        return $query
+            ->where('nama', 'like', '%' . $val . '%')
+            ->Orwhere('nip_nidn', 'like', '%' . $val . '%');
+    }
+
+    public function scopeFilter($query, $val)
+    {
+        if ($val == 'semua') {
+            return $query
+                ->where('role', 'admin')
+                ->orWhere('role', 'dosen')
+                ->orWhere('role', 'staf');
+        } else {
+            return $query
+                ->where('role', $val);
+        }
+    }
+
+    public function getrouteRouteKeyName()
+    {
+        return 'nip_nidn';
+    }
 }
