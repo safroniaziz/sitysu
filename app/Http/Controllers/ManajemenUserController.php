@@ -42,4 +42,9 @@ class ManajemenUserController extends Controller
 
         return redirect()->route('manajemen.user')->with('success', 'Berhasil Diubah.');
     }
+
+    public function changePassword()
+    {
+        return view('pages.manajemen-user.ubah-password');
+    }
 }

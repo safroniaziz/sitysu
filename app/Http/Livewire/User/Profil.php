@@ -42,7 +42,10 @@ class Profil extends Component
         $user = auth()->user();
 
         $data = $this->validate();
-        $data['foto_profil'] = $this->foto_profil->store('foto-profil');
+
+        if ($this->foto_profil) {
+            $data['foto_profil'] = $this->foto_profil->store('foto-profil');
+        }
 
         $this->dispatchBrowserEvent('swalUpdated');
         $user->update($data);

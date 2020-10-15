@@ -19,11 +19,16 @@ Route::middleware(['auth', 'checkRole:admin,dosen,staf'])->group(function () {
     Route::get('/', 'BerandaController@index')->name('beranda');
 
     Route::get('/profil', 'ProfileController@index')->name('profil');
+
+    Route::get('/ubah-password', 'ManajemenUserController@changePassword')->name('ubah.password');
+
+    Route::get('/surat-tugas', 'SuratTugasController@index')->name('surat.tugas');
+
+    Route::get('/surat-keterangan', 'SuratKeteranganController@index')->name('surat.keterangan');
 });
 
 Route::middleware(['auth', 'checkRole:admin,staf'])->group(function () {
     // Surat Tugas
-    Route::get('/surat-tugas', 'SuratTugasController@index')->name('surat.tugas');
 
     Route::get('/surat-tugas/create', 'SuratTugasController@create')->name('surat.tugas.create');
     Route::post('/surat-tugas/store', 'SuratTugasController@store')->name('surat.tugas.store');
@@ -34,7 +39,6 @@ Route::middleware(['auth', 'checkRole:admin,staf'])->group(function () {
     Route::get('/surat-tugas/{no_surat}/detail', 'SuratTugasController@detail')->name('surat.tugas.detail');
 
     // Surat Keterangan
-    Route::get('/surat-keterangan', 'SuratKeteranganController@index')->name('surat.keterangan');
 
     Route::get('/surat-keterangan/create', 'SuratKeteranganController@create')->name('surat.keterangan.create');
     Route::post('/surat-keterangan/store', 'SuratKeteranganController@store')->name('surat.keterangan.store');
