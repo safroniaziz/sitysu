@@ -62,3 +62,7 @@
 .red-star {
     color: red;
 }
+
+.user-profile .widget-content-area h3::after {
+    content: none;
+}
