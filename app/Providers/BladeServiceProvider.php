@@ -30,6 +30,8 @@ class BladeServiceProvider extends ServiceProvider
             if (Auth::user()) {
                 if (Auth::user()->role == $expression) {
                     return true;
+                } elseif (Auth::user()->role == 'admin') {
+                    return true;
                 }
             }
             return false;
