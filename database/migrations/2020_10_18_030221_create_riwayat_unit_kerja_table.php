@@ -1,0 +1,50 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateRiwayatUnitKerjaTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('riwayat_unit_kerja', function (Blueprint $table) {
+            $table->char('nip', 20);
+            $table->char('id_unit_kerja', 10);
+            $table->date('tanggal_edit')->nullable();
+            $table->char('nip_pengubah', 20);
+            $table->timestamps();
+        });
+
+        Schema::table('riwayat_unit_kerja', function (Blueprint $table) {
+            $table->primary(['nip', 'id_unit_kerja']);
+
+            $table->foreign('id_unit_kerja')->references('id_unit_kerja')->on('unit_kerja')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('nip')->references('nip')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('nip_pengubah')->references('nip')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('riwayat_unit_kerja');
+    }
+}

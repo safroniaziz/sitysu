@@ -14,16 +14,16 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->char('nip_nidn', 18);
-            $table->string('password');
-            $table->enum('role', ['dosen', 'staf', 'admin']);
-            $table->enum('jk', ['l', 'p'])->nullable();
-            $table->string('alamat')->nullable();
-            $table->string('no_hp', 15)->nullable();
-            $table->string('foto_profil')->nullable();
-            $table->rememberToken();
+            $table->char('nip', 20);
+            $table->string('nama_staff', 100);
+            $table->enum('status', ['aktif', 'nonaktif']);
+            $table->string('password', 45);
+            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->string('alamat', 100)->default('Bengkulu')->nullable();
+            $table->string('no_hp', 15);
+            $table->string('nidn', 8)->nullable();
+            $table->char('id_unit_kerja', 10);
+            $table->enum('hak_akses', ['dosen', 'staff', 'admin'])->default('dosen');
             $table->timestamps();
         });
     }
