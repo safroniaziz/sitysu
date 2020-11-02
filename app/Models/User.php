@@ -61,6 +61,11 @@ class User extends Authenticatable
 
     public function getrouteRouteKeyName()
     {
-        return 'nip_nidn';
+        return 'nip';
+    }
+
+    public function unitKerja()
+    {
+        return $this->belongsTo(UnitKerja::class, 'id_unit_kerja', 'id_unit_kerja');
     }
 }

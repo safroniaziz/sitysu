@@ -23,10 +23,11 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'nama' => $this->faker->name,
             'nip' => $this->faker->numberBetween($min = 100000000000000000, $max = 199999999999999999),
+            'nama_staff' => $this->faker->name,
+            'status' => 'aktif',
+            'id_unit_kerja' => 'G1',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
         ];
     }
 }
