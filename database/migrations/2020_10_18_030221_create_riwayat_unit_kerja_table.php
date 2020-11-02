@@ -24,17 +24,17 @@ class CreateRiwayatUnitKerjaTable extends Migration
         Schema::table('riwayat_unit_kerja', function (Blueprint $table) {
             $table->primary(['nip', 'id_unit_kerja']);
 
-            $table->foreign('id_unit_kerja')->references('id_unit_kerja')->on('unit_kerja')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
             $table->foreign('nip')->references('nip')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('id_unit_kerja')->references('id_unit_kerja')->on('unit_kerja')
+                ->onDelete('no action')
+                ->onUpdate('no action');
 
             $table->foreign('nip_pengubah')->references('nip')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onDelete('no action')
+                ->onUpdate('no action');
         });
     }
 

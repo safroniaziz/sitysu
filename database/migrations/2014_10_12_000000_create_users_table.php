@@ -17,11 +17,11 @@ class CreateUsersTable extends Migration
             $table->char('nip', 20);
             $table->string('nama_staff', 100);
             $table->enum('status', ['aktif', 'nonaktif']);
-            $table->string('password', 45);
+            $table->string('password', 255);
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('alamat', 100)->default('Bengkulu')->nullable();
-            $table->string('no_hp', 15);
-            $table->string('nidn', 8)->nullable();
+            $table->string('no_hp', 15)->nullable();
+            $table->string('nidn', 32)->nullable();
             $table->char('id_unit_kerja', 10);
             $table->enum('hak_akses', ['dosen', 'staff', 'admin'])->default('dosen');
             $table->timestamps();
@@ -35,6 +35,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('users');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

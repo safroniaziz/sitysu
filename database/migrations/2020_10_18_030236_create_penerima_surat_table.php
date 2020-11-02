@@ -22,12 +22,12 @@ class CreatePenerimaSuratTable extends Migration
 
         Schema::table('penerima_surat', function (Blueprint $table) {
             $table->foreign('nip')->references('nip')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onDelete('no action')
+                ->onUpdate('no action');
 
             $table->foreign('id_surat')->references('id_surat')->on('surat')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onDelete('no action')
+                ->onUpdate('no action');
         });
     }
 

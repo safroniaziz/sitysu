@@ -31,8 +31,8 @@ class CreateSuratTable extends Migration
 
         Schema::table('surat', function (Blueprint $table) {
             $table->foreign('nip')->references('nip')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onDelete('no action')
+                ->onUpdate('no action');
         });
     }
 
