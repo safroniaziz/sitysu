@@ -28,9 +28,9 @@ class BladeServiceProvider extends ServiceProvider
     {
         Blade::if('hasrole', function ($expression) {
             if (Auth::user()) {
-                if (Auth::user()->role == $expression) {
+                if (Auth::user()->hak_akses == $expression) {
                     return true;
-                } elseif (Auth::user()->role == 'admin') {
+                } elseif (Auth::user()->hak_akses == 'admin') {
                     return true;
                 }
             }

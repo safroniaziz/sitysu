@@ -16,7 +16,7 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (in_array($request->user()->role, $roles)) {
+        if (in_array($request->user()->hak_akses, $roles)) {
             return $next($request);
         }
 

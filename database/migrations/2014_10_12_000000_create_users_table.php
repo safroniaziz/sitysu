@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('nidn', 32)->nullable();
             $table->char('id_unit_kerja', 10);
             $table->enum('hak_akses', ['dosen', 'staff', 'admin'])->default('dosen');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

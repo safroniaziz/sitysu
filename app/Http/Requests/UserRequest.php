@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'nama' => 'required',
-            'nip_nidn' => 'required',
+            'nip' => 'required',
             'role' => 'required',
             'jk' => 'nullable',
             'alamat' => 'nullable',
@@ -38,7 +38,7 @@ class UserRequest extends FormRequest
     {
         return [
             'nama.required' => 'Nama user wajib diisi',
-            'nip_nidn.required' => 'NIP/NIDN wajib diisi',
+            'nip.required' => 'NIP/NIDN wajib diisi',
             'role.required' => 'Hak akses wajib diisi',
         ];
     }
