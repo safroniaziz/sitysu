@@ -10,4 +10,19 @@ class Surat extends Model
     use HasFactory;
 
     protected $table = 'surat';
+
+    protected $primaryKey = 'id_surat';
+
+    protected $fillable = [
+        'id_surat', 'no_surat', 'tentang', 'deskripsi_surat', 'jenis_surat', 'tanggal_surat', 'tanggal_mulai',
+        'tanggal_akhir', 'link_file', 'pejabat', 'jabatan_pejabat', 'id_user'
+    ];
+
+    public function scopeSearch($query, $val)
+    {
+        return $query
+            ->where('tentang', 'like', '%' . $val . '%')
+            ->Orwhere('no_surat', 'like', '%' . $val . '%')
+            ->Orwhere('pejabat', 'like', '%' . $val . '%');
+    }
 }

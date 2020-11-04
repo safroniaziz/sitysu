@@ -1,10 +1,10 @@
-const tugas = $('#flash-data').data('tugas');
+const surat = $('#flash-data').data('surat');
 
-if (tugas) {
+if (surat) {
     Swal.fire({
         icon: 'success',
-        title: 'Surat Tugas',
-        text: tugas,
+        title: 'Surat',
+        text: surat,
     })
 }
 

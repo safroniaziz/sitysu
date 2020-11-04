@@ -26,22 +26,32 @@ class SuratRequest extends FormRequest
     {
         if ($this->id) {
             return [
-                'file' => 'required|mimes:pdf,docx,dox',
-                'nama_surat' => 'required',
+                'link_file' => 'required|mimes:pdf,docx,dox',
                 'no_surat' => [
                     'required',
-                    Rule::unique('documents', 'no_surat')->ignore($this->id)
+                    Rule::unique('surat', 'no_surat')->ignore($this->id, 'id_surat')
                 ],
-                'penandatangan' => 'required',
-                'ditetapkan' => 'required',
+                'tentang' => 'required',
+                'jenis_surat' => 'required',
+                'tanggal_surat' => 'required',
+                'pejabat' => 'nullable',
+                'jabatan_pejabat' => 'nullable',
+                'tanggal_mulai' => 'nullable',
+                'tanggal_akhir' => 'nullable',
+                'deskripsi_surat' => 'nullable',
             ];
         } else {
             return [
-                'file' => 'required|mimes:pdf,docx,dox',
-                'nama_surat' => 'required',
-                'no_surat' => 'required|unique:documents',
-                'penandatangan' => 'required',
-                'ditetapkan' => 'required',
+                'link_file' => 'required|mimes:pdf,docx,dox',
+                'no_surat' => 'required|unique:surat',
+                'tentang' => 'required',
+                'jenis_surat' => 'required',
+                'tanggal_surat' => 'required',
+                'pejabat' => 'nullable',
+                'jabatan_pejabat' => 'nullable',
+                'tanggal_mulai' => 'nullable',
+                'tanggal_akhir' => 'nullable',
+                'deskripsi_surat' => 'nullable',
             ];
         }
     }
@@ -49,13 +59,13 @@ class SuratRequest extends FormRequest
     public function messages()
     {
         return [
-            'file.required' => 'File wajib diisi',
-            'mimes.required' => 'Format file wajib pdf, docx,doc',
-            'nama_surat.required' => 'Nama surat wajib diisi',
+            'link_file.required' => 'File wajib diisi',
+            'link_file.mimes' => 'Format file wajib pdf, docx,doc',
             'no_surat.required' => 'Nomor surat wajib diisi',
             'no_surat.unique' => 'Nomor surat sudah ada',
-            'penandatangan.required' => 'Penandatangan wajib diisi',
-            'ditetapkan.required' => 'Form ini wajib diisi',
+            'tentang.required' => 'Tentang surat wajib diisi',
+            'jenis_surat.required' => 'Jenis surat wajib diisi',
+            'tanggal_surat.required' => 'Form ini wajib diisi',
         ];
     }
 }
