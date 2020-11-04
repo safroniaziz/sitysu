@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            $table->integer('id_user')->autoIncrement();
             $table->char('nip', 20);
             $table->string('nama_staff', 100);
             $table->enum('status', ['aktif', 'nonaktif']);

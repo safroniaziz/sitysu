@@ -14,14 +14,14 @@ class CreatePenerimaSuratTable extends Migration
     public function up()
     {
         Schema::create('penerima_surat', function (Blueprint $table) {
-            $table->char('nip', 20);
+            $table->integer('id_user');
             $table->integer('id_surat')->autoIncrement(false);
-
-            $table->primary(['nip', 'id_surat']);
         });
 
         Schema::table('penerima_surat', function (Blueprint $table) {
-            $table->foreign('nip')->references('nip')->on('users')
+            $table->primary(['id_user', 'id_surat']);
+
+            $table->foreign('id_user')->references('id_user')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 

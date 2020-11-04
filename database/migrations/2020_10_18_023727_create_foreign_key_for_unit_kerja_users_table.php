@@ -14,7 +14,6 @@ class CreateForeignKeyForUnitKerjaUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->primary('nip');
             $table->foreign('id_unit_kerja')->references('id_unit_kerja')->on('unit_kerja')
                 ->onDelete('no action')
                 ->onUpdate('no action');
