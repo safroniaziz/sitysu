@@ -22,12 +22,12 @@ class CreatePenerimaSuratTable extends Migration
             $table->primary(['id_user', 'id_surat']);
 
             $table->foreign('id_user')->references('id_user')->on('users')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->foreign('id_surat')->references('id_surat')->on('surat')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

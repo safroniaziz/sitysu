@@ -73,7 +73,7 @@
         window.addEventListener('swalDeleted', event => {
             Swal.fire({
                 icon: 'success',
-                title: 'Surat Tugas Berhasil Dihapus',
+                title: 'Surat Berhasil Dihapus',
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,

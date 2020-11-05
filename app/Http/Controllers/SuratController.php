@@ -40,15 +40,20 @@ class SuratController extends Controller
     public function edit($no_surat)
     {
         $document = Surat::where('no_surat', $no_surat)->first();
+        $users = User::get();
 
-        return view('pages.surat.edit', compact('document'));
+        return view('pages.surat.edit', compact('document', 'users'));
     }
 
     public function update(SuratRequest $request, $id_surat)
     {
         $surat = Surat::where('id_surat', $id_surat)->first();
 
-        $surat->update($request->validated());
+        $data = $request->validated();
+
+        $surat->update($data);
+
+        $surat->users()->sync($data['penerima_surat']);
 
         return redirect()->route('surat')->with('success', 'Berhasil Diubah.');
     }

@@ -13,7 +13,7 @@ class DataTable extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $modalSurat;
-    public $nama_surat, $no_surat, $id_surat, $filter;
+    public $tentang, $no_surat, $id_surat, $filter;
 
     public $from = '1500-01-01';
     public $to = '2200-01-01';
@@ -25,9 +25,9 @@ class DataTable extends Component
 
     public function openModal($data)
     {
-        $this->nama_surat = $data['nama_surat'];
+        $this->tentang = $data['tentang'];
         $this->no_surat = $data['no_surat'];
-        $this->id_surat = $data['id'];
+        $this->id_surat = $data['id_surat'];
 
         $this->dispatchBrowserEvent('openSuratTugasDeleteModal');
     }
@@ -46,7 +46,8 @@ class DataTable extends Component
 
     public function remove($id_surat)
     {
-        Surat::find($id_surat)->delete();
+        $surat = Surat::find($id_surat)->delete();
+
         $this->dispatchBrowserEvent('closeSuratTugasDeleteModal');
         $this->dispatchBrowserEvent('swalDeleted');
     }
