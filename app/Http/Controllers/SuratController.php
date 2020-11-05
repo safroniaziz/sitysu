@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SuratRequest;
 
 use App\Models\Surat;
+use App\Models\User;
 
 class SuratController extends Controller
 {
@@ -15,7 +16,9 @@ class SuratController extends Controller
 
     public function create()
     {
-        return view('pages.surat.create');
+        $users = User::get();
+
+        return view('pages.surat.create', compact('users'));
     }
 
     public function store(SuratRequest $request)
@@ -27,7 +30,9 @@ class SuratController extends Controller
         $data['link_file'] = $file;
         $data['id_user'] = auth()->user()->id_user;
 
-        Surat::create($data);
+        $surat = Surat::create($data);
+
+        $surat->users()->attach($data['penerima_surat']);
 
         return redirect()->route('surat')->with('success', 'Berhasil Dimasukkan.');
     }

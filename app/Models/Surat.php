@@ -25,4 +25,9 @@ class Surat extends Model
             ->Orwhere('no_surat', 'like', '%' . $val . '%')
             ->Orwhere('pejabat', 'like', '%' . $val . '%');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'penerima_surat', 'id_surat', 'id_user');
+    }
 }

@@ -24,7 +24,7 @@ class UserFactory extends Factory
     {
         return [
             'nip' => $this->faker->numberBetween($min = 100000000000000000, $max = 199999999999999999),
-            'nama_staff' => $this->faker->name,
+            'nama' => $this->faker->name,
             'status' => 'aktif',
             'id_unit_kerja' => 'G1',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

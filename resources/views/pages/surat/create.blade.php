@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('cork/plugins/dropify/dropify.min.css') }}">
 
 <link href="{{ asset('cork/plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{ asset('cork/plugins/select2/select2.min.css') }}">
 <!-- END PAGE LEVEL STYLES -->
 
 <link href="{{ asset('custom/css/main.css') }}" rel="stylesheet" type="text/css" />
@@ -119,6 +120,19 @@
                                         </div>
                                         @enderror
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="penerima_surat">Penerima Surat <span class="red-star">*</span></label>
+                                        <select class="js-example-basic-multiple" name="penerima_surat[]" multiple="multiple">
+                                            @foreach ($users as $user)
+                                            <option value="{{ $user->id_user }}">{{ $user->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('penerima_surat')
+                                        <div class="text-danger">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
                                     <div class="form-group mb-12 ml-3">
                                         <label for="exampleFormControlTextarea1">Deskripsi Surat</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="70" name="deskripsi_surat"></textarea>
@@ -155,6 +169,13 @@
 
 <script>
     var firstUpload = new FileUploadWithPreview('myFirstImage')
+</script>
+
+<script src="{{ asset('cork/plugins/select2/select2.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
 </script>
 <!-- END PAGE LEVEL PLUGINS -->
 

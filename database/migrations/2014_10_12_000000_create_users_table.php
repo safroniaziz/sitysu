@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->integer('id_user')->autoIncrement();
             $table->char('nip', 20);
-            $table->string('nama_staff', 100);
+            $table->string('nama', 100);
             $table->enum('status', ['aktif', 'nonaktif']);
             $table->string('password', 255);
             $table->enum('jenis_kelamin', ['L', 'P']);

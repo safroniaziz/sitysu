@@ -39,6 +39,7 @@ class SuratRequest extends FormRequest
                 'tanggal_mulai' => 'nullable',
                 'tanggal_akhir' => 'nullable',
                 'deskripsi_surat' => 'nullable',
+                'penerima_surat' => 'required',
             ];
         } else {
             return [
@@ -52,6 +53,7 @@ class SuratRequest extends FormRequest
                 'tanggal_mulai' => 'nullable',
                 'tanggal_akhir' => 'nullable',
                 'deskripsi_surat' => 'nullable',
+                'penerima_surat' => 'required',
             ];
         }
     }
@@ -66,6 +68,7 @@ class SuratRequest extends FormRequest
             'tentang.required' => 'Tentang surat wajib diisi',
             'jenis_surat.required' => 'Jenis surat wajib diisi',
             'tanggal_surat.required' => 'Form ini wajib diisi',
+            'penerima_surat.required' => 'Penerima surat wajib diisi',
         ];
     }
 }
