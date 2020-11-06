@@ -24,22 +24,26 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required',
             'nip' => 'required',
-            'role' => 'required',
-            'jk' => 'nullable',
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
             'alamat' => 'nullable',
             'no_hp' => 'nullable',
-            'foto_profil' => 'nullable',
+            'nidn' => 'nullable',
+            'id_unit_kerja' => 'required',
+            'hak_akses' => 'required',
+            // 'foto_profil' => 'nullable',
         ];
     }
 
     public function messages()
     {
         return [
+            'nip.required' => 'NIP/NIK wajib diisi',
             'nama.required' => 'Nama user wajib diisi',
-            'nip.required' => 'NIP/NIDN wajib diisi',
-            'role.required' => 'Hak akses wajib diisi',
+            'jenis_kelamin.required' => 'Pilih jenis kelamin',
+            'id_unit_kerja.required' => 'Pilih unit kerja',
+            'hak_akses.required' => 'Hak akses wajib diisi',
         ];
     }
 }

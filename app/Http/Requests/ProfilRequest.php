@@ -25,7 +25,7 @@ class ProfilRequest extends FormRequest
     {
         return [
             'nama' => 'required',
-            'nip_nidn' => 'required',
+            'nip' => 'required',
             'jk' => 'nullable',
             'alamat' => 'nullable',
             'no_hp' => 'nullable',
@@ -37,7 +37,7 @@ class ProfilRequest extends FormRequest
     {
         return [
             'nama.required' => 'Nama user wajib diisi',
-            'nip_nidn.required' => 'NIP/NIDN wajib diisi',
+            'nip.required' => 'NIP/NIDN wajib diisi',
         ];
     }
 }

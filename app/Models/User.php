@@ -19,7 +19,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nama', 'nip', 'hak_akses', 'password', 'no_hp', 'alamat', 'jenis_kelamin',
+        'nip', 'nama', 'status', 'password', 'jenis_kelamin', 'alamat', 'no_hp', 'nidn', 'id_unit_kerja',
+        'hak_akses',
     ];
 
     /**
@@ -45,19 +46,19 @@ class User extends Authenticatable
     {
         return $query
             ->where('nama', 'like', '%' . $val . '%')
-            ->Orwhere('nip_nidn', 'like', '%' . $val . '%');
+            ->Orwhere('nip', 'like', '%' . $val . '%');
     }
 
     public function scopeFilter($query, $val)
     {
         if ($val == 'semua') {
             return $query
-                ->where('role', 'admin')
-                ->orWhere('role', 'dosen')
-                ->orWhere('role', 'staf');
+                ->where('hak_akses', 'admin')
+                ->orWhere('hak_akses', 'dosen')
+                ->orWhere('hak_akses', 'staf');
         } else {
             return $query
-                ->where('role', $val);
+                ->where('hak_akses', $val);
         }
     }
 

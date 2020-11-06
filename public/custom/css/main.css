@@ -55,8 +55,8 @@
 
 .image-container .custom-dropdown {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 7px;
+    right: 7px;
 }
 
 .red-star {
@@ -65,4 +65,16 @@
 
 .user-profile .widget-content-area h3::after {
     content: none;
+}
+
+.tiny-button {
+    height: 20px;
+    text-align: center;
+    line-height: 4px;
+}
+
+.user-status {
+    position: absolute;
+    top: 7px;
+    left: 7px;
 }

@@ -37,18 +37,18 @@
 @push('script-after')
 
     <script>
-        window.addEventListener('closeUserDeleteModal', event => {
-            $("#deleteUserModal").modal('hide');
+        window.addEventListener('closeUserDisableModal', event => {
+            $("#disableUserModal").modal('hide');
         });
 
-        window.addEventListener('openUserDeleteModal', event => {
-            $("#deleteUserModal").modal('show');
+        window.addEventListener('openUserDisableModal', event => {
+            $("#disableUserModal").modal('show');
         });
 
-        window.addEventListener('swalDeleted', event => {
+        window.addEventListener('swalDisable', event => {
             Swal.fire({
                 icon: 'success',
-                title: 'Data User Berhasil Dihapus',
+                title: 'Data User Berhasil di non-aktifkan',
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,

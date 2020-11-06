@@ -10,7 +10,7 @@ class DataCard extends Component
 {
     use WithPagination;
 
-    public $nama, $nip_nidn, $id_user;
+    public $nama, $nip, $id_user;
 
     public $search = '';
     public $filter = 'semua';
@@ -40,16 +40,16 @@ class DataCard extends Component
     public function openModal($user)
     {
         $this->nama = $user['nama'];
-        $this->nip_nidn = $user['nip_nidn'];
-        $this->id_user = $user['id'];
+        $this->nip = $user['nip'];
+        $this->id_user = $user['id_user'];
 
-        $this->dispatchBrowserEvent('openUserDeleteModal');
+        $this->dispatchBrowserEvent('openUserDisableModal');
     }
 
-    public function remove($id_user)
+    public function disable($id_user)
     {
-        User::find($id_user)->delete();
-        $this->dispatchBrowserEvent('closeUserDeleteModal');
-        $this->dispatchBrowserEvent('swalDeleted');
+        User::find($id_user)->update(['status' => 'nonaktif']);
+        $this->dispatchBrowserEvent('closeUserDisableModal');
+        $this->dispatchBrowserEvent('swalDisable');
     }
 }

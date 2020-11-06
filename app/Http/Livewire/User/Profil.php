@@ -9,11 +9,11 @@ class Profil extends Component
 {
     use WithFileUploads;
 
-    public $nama, $nip_nidn, $alamat, $no_hp, $jk, $foto_profil;
+    public $nama, $nip, $alamat, $no_hp, $jk, $foto_profil;
 
     protected $rules = [
         'nama' => 'required',
-        'nip_nidn' => 'required',
+        'nip' => 'required',
         'jk' => 'nullable',
         'alamat' => 'nullable',
         'no_hp' => 'nullable',
@@ -24,7 +24,7 @@ class Profil extends Component
     {
         $user = auth()->user();
         $this->nama = $user->nama;
-        $this->nip_nidn = $user->nip_nidn;
+        $this->nip = $user->nip;
         $this->alamat = $user->alamat;
         $this->no_hp = $user->no_hp;
         $this->jk = $user->jk;
