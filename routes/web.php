@@ -23,7 +23,7 @@ Route::middleware(['auth', 'checkRole:admin,dosen,staf'])->group(function () {
     Route::get('/ubah-password', 'ManajemenUserController@changePassword')->name('ubah.password');
 
 
-    Route::get('/surat', 'SuratController@index')->name('surat');
+    Route::get('/surat/index', 'SuratController@index')->name('surat');
 
     /*
         START DIHAPUS
@@ -66,7 +66,9 @@ Route::middleware(['auth', 'checkRole:admin,staf'])->group(function () {
 });
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
-    Route::get('/manajemen-user', 'ManajemenUserController@index')->name('manajemen.user');
+    Route::get('/satuan-kerja/index', 'SatuanKerjaController@index')->name('satuan.kerja');
+
+    Route::get('/manajemen-user/index', 'ManajemenUserController@index')->name('manajemen.user');
 
     Route::get('/manajemen-user/create', 'ManajemenUserController@create')->name('manajemen.user.create');
     Route::post('/manajemen-user/store', 'ManajemenUserController@store')->name('manajemen.user.store');
