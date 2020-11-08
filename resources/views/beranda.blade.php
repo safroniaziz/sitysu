@@ -108,7 +108,7 @@
                         <div class="widget widget-activity-three">
 
                             <div class="widget-heading">
-                                <h5 class="">Notifications</h5>
+                                <h5 class="">Pemberitahuan</h5>
                             </div>
 
                             <div class="widget-content">

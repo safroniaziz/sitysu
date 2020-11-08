@@ -71,4 +71,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UnitKerja::class, 'id_unit_kerja', 'id_unit_kerja');
     }
+
+    public function surat()
+    {
+        return $this->belongsToMany(Surat::class, 'penerima_surat', 'id_user', 'id_surat');
+    }
 }

@@ -34,12 +34,20 @@ class DataTable extends Component
 
     public function render()
     {
-        $documents = Surat::query()
-            ->search($this->search)
-            ->orderBy($this->sortBy, $this->sortDirection)
-            ->WhereBetween('tanggal_surat', [$this->from, $this->to])
-            // ->where('jenis_surat')
-            ->paginate(10);
+        if (auth()->user()->hak_akses == 'dosen') {
+            $documents = auth()->user()->surat()
+                ->search($this->search)
+                ->orderBy($this->sortBy, $this->sortDirection)
+                ->WhereBetween('tanggal_surat', [$this->from, $this->to])
+                ->paginate(10);
+        } else {
+            $documents = Surat::query()
+                ->search($this->search)
+                ->orderBy($this->sortBy, $this->sortDirection)
+                ->WhereBetween('tanggal_surat', [$this->from, $this->to])
+                ->paginate(10);
+        }
+
 
         return view('livewire.surat.data-table', compact('documents'));
     }
