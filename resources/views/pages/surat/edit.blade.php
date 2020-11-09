@@ -130,9 +130,13 @@
                                     <div class="form-group col-md-12">
                                         <label for="penerima_surat">Penerima Surat <span class="red-star">*</span></label>
                                         <select class="js-example-basic-multiple" name="penerima_surat[]" multiple="multiple">
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id_user }}">{{ $user->nama }}</option>
-                                            @endforeach
+                                        @foreach ($users as $user)
+                                            @if($document->users->contains('id_user', $user->id_user))
+                                            <option value="{{ $user->id_user }}" selected>{{ $user->nama }}</option>
+                                            @else
+                                            <option value="{{ $user->id_user }}">{{ $user->nama }}</option>
+                                            @endif
+                                        @endforeach
                                         </select>
                                         @error('penerima_surat')
                                         <div class="text-danger">

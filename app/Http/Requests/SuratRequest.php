@@ -24,12 +24,12 @@ class SuratRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->id) {
+        if ($this->id_surat) {
             return [
                 'link_file' => 'required|mimes:pdf,docx,dox',
                 'no_surat' => [
                     'required',
-                    Rule::unique('surat', 'no_surat')->ignore($this->id, 'id_surat')
+                    Rule::unique('surat', 'no_surat')->ignore($this->id_surat, 'id_surat')
                 ],
                 'tentang' => 'required',
                 'jenis_surat' => 'required',

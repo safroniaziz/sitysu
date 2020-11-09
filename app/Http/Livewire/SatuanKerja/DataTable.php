@@ -6,6 +6,8 @@ use App\Models\UnitKerja;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+use Illuminate\Validation\Rule;
+
 class DataTable extends Component
 {
     use WithPagination;
@@ -96,8 +98,16 @@ class DataTable extends Component
 
     public function update()
     {
+        $validatedData = $this->validate([
+            'id_unit_kerja' => [
+                'required',
+                Rule::unique('unit_kerja', 'id_unit_kerja')->ignore($this->id_unit_kerja, 'id_unit_kerja')
+            ],
+            'nama_departemen' => 'required',
+        ]);
+
         $data = UnitKerja::where('id_unit_kerja', $this->id_unit_kerja);
-        $data->update($this->validate());
+        $data->update($validatedData);
 
         $this->dispatchBrowserEvent('closeEditSatuanKerjaModal');
         $this->dispatchBrowserEvent('swalEdited');
