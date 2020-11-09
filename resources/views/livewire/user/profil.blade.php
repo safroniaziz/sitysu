@@ -21,14 +21,14 @@
                         <ul class="contacts-block list-unstyled">
                             <li class="contacts-block__item">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                @if ($user->jk == 'l')
+                                @if ($user->jenis_kelamin == 'L')
                                 Laki-laki
                                 @else
                                 Perempuan
                                 @endif
                             </li>
                             <li class="contacts-block__item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> {{ Str::ucfirst($user->nip_nidn) }}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> {{ Str::ucfirst($user->nip) }}
                             </li>
                             <li class="contacts-block__item">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> {{ ($user->alamat ? $user->alamat : 'Belum Diisi') }}
@@ -58,13 +58,13 @@
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Wahyu Syahputra" name="nama" wire:model="nama">
+                                <input type="text" class="form-control" id="nama" placeholder="Wahyu Syahputra" name="nama" wire:model="nama" readonly>
                                 @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="nip_nidn">NIP/NIDN</label>
-                                <input type="text" class="form-control" id="nip_nidn" placeholder="21387429" name="nip_nidn" wire:model="nip_nidn">
-                                @error('nip_nidn') <span class="text-danger">{{ $message }}</span> @enderror
+                                <label for="nip">NIP / NIK</label>
+                                <input type="text" class="form-control" id="nip" placeholder="21387429" name="nip" wire:model="nip" readonly>
+                                @error('nip') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="form-row mb-2">
@@ -78,7 +78,12 @@
                             </div>
                         </div>
                         <div class="form-row mb-2">
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="nidn">NIDN</label>
+                                <input type="text" class="form-control" id="nidn" wire:model="nidn" value="{{ $user->nidn }}" placeholder="17272728">
+                                @error('nidn') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label for="foto_profil">Foto Profil</label>
                                 <input type="file" class="form-control" id="foto_profil" wire:model="foto_profil" value="{{ $user->foto_profil }}">
                                 @error('foto_profil') <span class="text-danger">{{ $message }}</span> @enderror
@@ -86,14 +91,14 @@
                         </div>
                         <div class="form-row mb-2">
                             <div class="form-group col-md-12">
-                                <label for="jk">Jenis Kelamin</label>
+                                <label for="jenis_kelamin">Jenis Kelamin</label>
                                 <br>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline1" name="jk" class="custom-control-input" value="l" wire:model="jk">
+                                    <input type="radio" id="customRadioInline1" name="jenis_kelamin" class="custom-control-input" value="L" wire:model="jenis_kelamin">
                                     <label class="custom-control-label" for="customRadioInline1">Laki-laki</label>
                                     </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline2" name="jk" class="custom-control-input" value="p" wire:model="jk">
+                                    <input type="radio" id="customRadioInline2" name="jenis_kelamin" class="custom-control-input" value="P" wire:model="jenis_kelamin">
                                     <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
                                 </div>
 
