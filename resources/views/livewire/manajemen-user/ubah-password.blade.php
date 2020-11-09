@@ -6,6 +6,11 @@
                     {{ session('error') }}
                 </div>
             @endif
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
         </div>
         <div class="form-row mb-2 justify-content-center">
             <div class="form-group col-md-6 ">

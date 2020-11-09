@@ -38,6 +38,7 @@ class UbahPassword extends Component
                 $password = Hash::make($this->new_password);
 
                 $user->update(['password' => $password]);
+                session()->flash('success', 'Password telah berhasil diubah.');
             }
         } else {
             session()->flash('error', 'Password yang anda masukkan salah.');
