@@ -35,7 +35,7 @@ Route::middleware(['auth', 'checkRole:admin,dosen,staf'])->group(function () {
     */
 });
 
-Route::middleware(['auth', 'checkRole:admin,staf'])->group(function () {
+Route::middleware(['auth', 'checkRole:admin,staf', 'checkInputSurat'])->group(function () {
 
     Route::get('/surat/create', 'SuratController@create')->name('surat.create');
     Route::post('/surat/store', 'SuratController@store')->name('surat.store');
