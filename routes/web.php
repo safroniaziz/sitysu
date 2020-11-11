@@ -68,6 +68,8 @@ Route::middleware(['auth', 'checkRole:admin,staf', 'checkInputSurat'])->group(fu
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/manajemen-user/satuan-kerja/index', 'SatuanKerjaController@index')->name('satuan.kerja');
 
+    Route::get('/manajemen-user/riwayat-unit-kerja/index', 'RiwayatUnitKerjaController@index')->name('riwayat.unit.kerja');
+
     Route::get('/manajemen-user/data-user/index', 'ManajemenUserController@index')->name('manajemen.user');
 
     Route::get('/manajemen-user/data-user/create', 'ManajemenUserController@create')->name('manajemen.user.create');

@@ -40,11 +40,14 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled {{ request()->is('manajemen-user/*') ? 'show' : '' }}" id="app" data-parent="#accordionExample">
+                    <li class="{{ request()->is('manajemen-user/data-user/*') ? 'active' : '' }}">
+                        <a href="{{ route('manajemen.user') }}" aria-expanded="false" class="dropdown-toggle"> Data User  </a>
+                    </li>
                     <li class="{{ request()->is('manajemen-user/satuan-kerja/*') ? 'active' : '' }}">
                         <a href="{{ route('satuan.kerja') }}" aria-expanded="false" class="dropdown-toggle" {{ request()->is('satuan-kerja') ? 'data-active=true' : '' }}> Satuan Kerja </a>
                     </li>
-                    <li class="{{ request()->is('manajemen-user/data-user/*') ? 'active' : '' }}">
-                        <a href="{{ route('manajemen.user') }}" aria-expanded="false" class="dropdown-toggle"> Data User  </a>
+                    <li class="{{ request()->is('manajemen-user/riwayat-unit-kerja/*') ? 'active' : '' }}">
+                        <a href="{{ route('riwayat.unit.kerja') }}" aria-expanded="false" class="dropdown-toggle"> Riwayat Unit Kerja  </a>
                     </li>
                 </ul>
             </li>
