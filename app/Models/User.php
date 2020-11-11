@@ -20,7 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nip', 'nama', 'status', 'password', 'jenis_kelamin', 'alamat', 'no_hp', 'nidn', 'id_unit_kerja',
-        'hak_akses', 'foto_profil'
+        'hak_akses', 'foto_profil', 'input_surat',
     ];
 
     /**
@@ -75,5 +75,10 @@ class User extends Authenticatable
     public function surat()
     {
         return $this->belongsToMany(Surat::class, 'penerima_surat', 'id_user', 'id_surat');
+    }
+
+    public function riwayatUnitKerja()
+    {
+        return $this->hasOne(RiwayatUnitKerja::class, 'id_user');
     }
 }

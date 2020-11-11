@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\RiwayatUnitKerja;
 use App\Models\UnitKerja;
 use App\Models\User;
+use GuzzleHttp\Psr7\Request;
 
+use function GuzzleHttp\Psr7\uri_for;
 
 class ManajemenUserController extends Controller
 {
@@ -16,18 +19,43 @@ class ManajemenUserController extends Controller
 
     public function create()
     {
-        $unit_kerja = UnitKerja::get();
-
-        return view('pages.manajemen-user.create', compact('unit_kerja'));
+        return view('pages.manajemen-user.create');
     }
 
-    public function store(UserRequest $request)
+    public function createDosen()
     {
-        $user = $request->validated();
-        $user['password'] = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
-        $user['status'] = 'aktif';
+        $unit_kerja = UnitKerja::get();
 
-        User::create($user);
+        return view('pages.manajemen-user.dosen.create', compact('unit_kerja'));
+    }
+
+    public function createStaf()
+    {
+        $unit_kerja = UnitKerja::get();
+
+        return view('pages.manajemen-user.staf.create', compact('unit_kerja'));
+    }
+
+    public function store(UserRequest $request, $hak_akses)
+    {
+        $admin = User::where('hak_akses', 'admin')->first();
+
+        $data_user = $request->validated();
+        $data_user['password'] = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+        $data_user['status'] = 'aktif';
+        $data_user['hak_akses'] = $hak_akses;
+
+        $user = User::create($data_user);
+
+        if ($hak_akses == 'staf' && $request->input_surat == 'aktif') {
+            $data = new RiwayatUnitKerja;
+
+            $data->tanggal_berakhir = $request->tanggal_berakhir;
+            $data->nip_pengubah = $admin->nip;
+            $data->id_unit_kerja = $request->id_unit_kerja;
+
+            $user->riwayatUnitKerja()->save($data);
+        }
 
         return redirect()->route('manajemen.user')->with('success', 'Berhasil Ditambahkan.');
     }

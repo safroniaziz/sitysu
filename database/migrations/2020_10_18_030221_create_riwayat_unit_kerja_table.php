@@ -16,7 +16,7 @@ class CreateRiwayatUnitKerjaTable extends Migration
         Schema::create('riwayat_unit_kerja', function (Blueprint $table) {
             $table->integer('id_user', 20);
             $table->char('id_unit_kerja', 10);
-            $table->date('tanggal_edit')->nullable();
+            $table->date('tanggal_berakhir')->nullable();
             $table->char('nip_pengubah', 20);
             $table->timestamps();
         });

@@ -20,31 +20,12 @@
 
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
-            <h4 class="text-center">Pilih User</h4>
+            <h4 class="text-center">Tambah Dosen</h4>
 
-            <div class="row mt-3">
-                <div class="col-lg-6">
-                    <a href="{{ route('manajemen.user.create.dosen') }}">
-                        <div class="img-box float-right">
-                            <button class="btn btn-primary" style="margin-left: 150px;">Dosen</button>
-                            <img src="{{ asset('storage/menu/create-dosen.png') }}" class="img-fluid">
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="{{ route('manajemen.user.create.staf') }}">
-                        <button class="btn btn-primary" style="margin-left: 150px;">Staf TU</button>
-                        <div class="img-box">
-                            <img src="{{ asset('storage/menu/create-staf.png') }}" class="img-fluid" style="margin-top: 0.8rem !important">
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            {{-- <div class="widget-content widget-content-area br-6">
+            <div class="widget-content widget-content-area br-6">
                 <div class="mb-4">
 
-                    <form action="{{ route('manajemen.user.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('manajemen.user.store', 'dosen') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
 
@@ -69,21 +50,6 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="hak_akses">Hak Akses <span class="red-star">*</span></label>
-                                        <select name="hak_akses" id="hak_akses" class="form-control" wire:model="hak_akses">
-                                            <option value="">Pilih Hak Akses...</option>
-                                            <option value="dosen">Dosen</option>
-                                            <option value="staf">Staf</option>
-                                        </select>
-                                        @error('hak_akses')
-                                        <div class="mt-2 text-danger">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-4">
                                         <label for="id_unit_kerja">Unit Kerja <span class="red-star">*</span></label>
                                         <select name="id_unit_kerja" id="id_unit_kerja" class="form-control">
                                             <option value="">Pilih Unit Kerja...</option>
@@ -97,6 +63,8 @@
                                         </div>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="form-group col-md-4">
                                         <label for="no_hp">No. Hp</label>
                                         <input type="text" class="form-control" id="no_hp" placeholder="083287498327" name="no_hp">
@@ -115,8 +83,6 @@
                                         </div>
                                         @enderror
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="form-group col-md-4">
                                         <label for="alamat">Alamat</label>
                                         <input type="text" class="form-control" id="alamat" placeholder="Jl. Kampar 03" name="alamat">
@@ -126,6 +92,8 @@
                                         </div>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="form-group col-md-4">
                                         <label for="jenis_kelamin">Jenis Kelamin <span class="red-star">*</span></label>
                                         <div class="mt-2">
@@ -156,7 +124,7 @@
                     </form>
 
                 </div>
-            </div> --}}
+            </div>
 
         </div>
 

@@ -71,7 +71,17 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/manajemen-user/data-user/index', 'ManajemenUserController@index')->name('manajemen.user');
 
     Route::get('/manajemen-user/data-user/create', 'ManajemenUserController@create')->name('manajemen.user.create');
-    Route::post('/manajemen-user/data-user/store', 'ManajemenUserController@store')->name('manajemen.user.store');
+
+    Route::get('/manajemen-user/data-user/create/dosen', 'ManajemenUserController@createDosen')->name('manajemen.user.create.dosen');
+    Route::get('/manajemen-user/data-user/create/staf', 'ManajemenUserController@createStaf')->name('manajemen.user.create.staf');
+
+    /*
+        START DIHAPUS
+    */
+    Route::post('/manajemen-user/data-user/store/{hak_akses}', 'ManajemenUserController@store')->name('manajemen.user.store');
+    /*
+        END DIHAPUS
+    */
 
     Route::get('/manajemen-user/data-user/{user}/edit', 'ManajemenUserController@edit')->name('manajemen.user.edit');
     Route::patch('/manajemen-user/data-user/{user}/update', 'ManajemenUserController@update')->name('manajemen.user.update');

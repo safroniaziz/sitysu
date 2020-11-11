@@ -30,8 +30,8 @@ class UserRequest extends FormRequest
             'alamat' => 'nullable',
             'no_hp' => 'nullable',
             'nidn' => 'nullable',
+            'input_surat' => 'nullable',
             'id_unit_kerja' => 'required',
-            'hak_akses' => 'required',
             // 'foto_profil' => 'nullable',
         ];
     }
@@ -43,7 +43,6 @@ class UserRequest extends FormRequest
             'nama.required' => 'Nama user wajib diisi',
             'jenis_kelamin.required' => 'Pilih jenis kelamin',
             'id_unit_kerja.required' => 'Pilih unit kerja',
-            'hak_akses.required' => 'Hak akses wajib diisi',
         ];
     }
 }
