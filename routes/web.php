@@ -53,7 +53,7 @@ Route::middleware(['auth', 'checkRole:admin,staf', 'checkInputSurat'])->group(fu
     Route::post('/surat-tugas/store', 'SuratTugasController@store')->name('surat.tugas.store');
     Route::get('/surat-tugas/{no_surat}/edit', 'SuratTugasController@edit')->name('surat.tugas.edit');
     Route::patch('/surat-tugas/{id}/update', 'SuratTugasController@update')->name('surat.tugas.update');
-    Route::get('/surat-tugas/{no_surat}/detail', 'SuratTugasController@detail')->name('surat.tugas.detail');
+    // Route::get('/surat-tugas/{no_surat}/detail', 'SuratTugasController@detail')->name('surat.tugas.detail');
     // Surat Keterangan
     Route::get('/surat-keterangan/create', 'SuratKeteranganController@create')->name('surat.keterangan.create');
     Route::post('/surat-keterangan/store', 'SuratKeteranganController@store')->name('surat.keterangan.store');

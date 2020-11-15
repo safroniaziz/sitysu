@@ -15,7 +15,7 @@ class Surat extends Model
 
     protected $fillable = [
         'id_surat', 'no_surat', 'tentang', 'deskripsi_surat', 'jenis_surat', 'tanggal_surat', 'tanggal_mulai',
-        'tanggal_akhir', 'link_file', 'pejabat', 'jabatan_pejabat', 'id_user'
+        'tanggal_akhir', 'link_file', 'link_download', 'pejabat', 'jabatan_pejabat', 'id_user'
     ];
 
     public function scopeSearch($query, $val)

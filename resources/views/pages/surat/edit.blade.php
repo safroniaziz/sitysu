@@ -29,7 +29,7 @@
                         @method('patch')
                         @csrf
                         <div class="row">
-                            <div class="col-xl-3">
+                            {{-- <div class="col-xl-3">
                                 <div class="custom-file-container" data-upload-id="myFirstImage">
                                     <label>Dokumen Elektronik <span class="red-star">*</span></label>
                                     @error('link_file')
@@ -39,9 +39,18 @@
                                     @enderror
                                     <input name="link_file" type="file" id="input-file-max-fs" class="dropify" data-default-file="{{ $document->link_file ? asset('storage/' . $document->link_file) : asset('cork/assets/img/upload-dokumen.png') }}" data-max-file-size="2M" data-height="300" data-allowed-file-extensions="pdf doc docx" />
                                 </div>
-                            </div>
-                            <div class="col-xl-9">
+                            </div> --}}
+                            <div class="col-xl-12">
                                 <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="link_file">Link File <span class="red-star">*</span></label>
+                                        <input type="text" class="form-control" id="link_file" placeholder="https://drive.google.com/file/d/1IaDz-Vbuq4NLJ1S1EuzRrLe4kXdLhZSA/view?usp=sharing" name="link_file" value="{{ $document->link_file }}">
+                                        @error('link_file')
+                                        <div class="mt-2 text-danger">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
                                     <div class="form-group col-md-6">
                                         <label for="no_surat">Nomor Surat <span class="red-star">*</span></label>
                                         <input type="text" class="form-control" id="no_surat" placeholder="1298390183" name="no_surat" value="{{ $document->no_surat }}">
@@ -146,7 +155,7 @@
                                     </div>
                                     <div class="form-group mb-12 ml-3">
                                         <label for="exampleFormControlTextarea1">Deskripsi Surat</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="70" name="deskripsi_surat" value="{{ $document->deskripsi_surat }}"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="98" name="deskripsi_surat" value="{{ $document->deskripsi_surat }}"></textarea>
                                     </div>
                                     <div class="form-group col-md-12 mt-5 text-right">
                                         <button type="submit" class="btn btn-primary">Simpan</button>

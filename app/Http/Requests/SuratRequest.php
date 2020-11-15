@@ -26,7 +26,7 @@ class SuratRequest extends FormRequest
     {
         if ($this->id_surat) {
             return [
-                'link_file' => 'required|mimes:pdf,docx,dox',
+                'link_file' => 'required',
                 'no_surat' => [
                     'required',
                     Rule::unique('surat', 'no_surat')->ignore($this->id_surat, 'id_surat')
@@ -43,7 +43,7 @@ class SuratRequest extends FormRequest
             ];
         } else {
             return [
-                'link_file' => 'required|mimes:pdf,docx,dox',
+                'link_file' => 'required',
                 'no_surat' => 'required|unique:surat',
                 'tentang' => 'required',
                 'jenis_surat' => 'required',
@@ -61,8 +61,7 @@ class SuratRequest extends FormRequest
     public function messages()
     {
         return [
-            'link_file.required' => 'File wajib diisi',
-            'link_file.mimes' => 'Format file wajib pdf, docx,doc',
+            'link_file.required' => 'Link file wajib diisi',
             'no_surat.required' => 'Nomor surat wajib diisi',
             'no_surat.unique' => 'Nomor surat sudah ada',
             'tentang.required' => 'Tentang surat wajib diisi',

@@ -23,6 +23,7 @@ class CreateSuratTable extends Migration
             $table->date('tanggal_mulai')->nullable();
             $table->date('tanggal_akhir')->nullable();
             $table->string('link_file', 200);
+            $table->string('link_download', 200);
             $table->string('pejabat', 100)->nullable();
             $table->string('jabatan_pejabat', 45)->nullable();
             $table->integer('id_user');
