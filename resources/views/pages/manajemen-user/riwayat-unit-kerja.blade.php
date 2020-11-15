@@ -40,8 +40,17 @@
 @endsection
 
 @push('script-after')
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script>
+        window.addEventListener('openNonActiveUser', event => {
+            $("#nonActiveUser").modal('show');
+        });
 
+        window.addEventListener('closeNonActiveUser', event => {
+            $("#nonActiveUser").modal('hide');
+        });
+    </script>
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="{{ asset('cork/plugins/table/datatable/datatables.js') }}"></script>
     <script src="{{ asset('cork/plugins/flatpickr/flatpickr.js') }}"></script>
     <script src="{{ asset('cork/plugins/flatpickr/custom-flatpickr.js') }}"></script>

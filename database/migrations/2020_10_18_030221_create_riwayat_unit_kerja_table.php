@@ -18,6 +18,7 @@ class CreateRiwayatUnitKerjaTable extends Migration
             $table->char('id_unit_kerja', 10);
             $table->date('tanggal_berakhir')->nullable();
             $table->char('nip_pengubah', 20);
+            $table->enum('status', ['aktif', 'tidak'])->default('aktif');
             $table->timestamps();
         });
 
