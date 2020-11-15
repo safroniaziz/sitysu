@@ -85,7 +85,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="foto_profil">Foto Profil</label>
-                                <input type="file" class="form-control" id="foto_profil" wire:model="foto_profil" value="{{ $user->foto_profil }}">
+                                <input type="file" class="form-control" id="foto_profil" wire:model="foto_profil">
                                 @error('foto_profil') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
