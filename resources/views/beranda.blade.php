@@ -27,6 +27,8 @@
             <div class="col-xl-12">
 
                 <div class="row">
+
+                    @hasrole('admin')
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
@@ -75,6 +77,28 @@
                             </div>
                         </div>
                     </div>
+                    @endhasrole
+
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+                        <div class="widget widget-card-four">
+                            <div class="widget-content">
+                                <div class="w-content">
+                                    <div class="w-info">
+                                        <h6 class="value">{{ number_format($surat_user) }}</h6>
+                                        <p class="">Surat</p>
+                                    </div>
+                                    <div class="">
+                                        <div class="w-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5c1ac3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-title">
+                                    <p class="w-title-custom">Jumlah Surat Tugas & Keputusan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
@@ -100,7 +124,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-12">
+            {{-- <div class="col-xl-12">
 
                 <div class="row">
 
@@ -221,7 +245,7 @@
 
                 </div>
 
-            </div>
+            </div> --}}
 
         </div>
 
