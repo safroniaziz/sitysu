@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /vendor
+!/vendor/laravel
+!/vendor/livewire
 .env
 .env.backup
 .phpunit.result.cache
