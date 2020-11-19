@@ -44,6 +44,8 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
 
     Route::get('/manajemen-user/data-user/index', 'ManajemenUserController@index')->name('manajemen.user');
 
+    Route::post('/manajemen-user/data-user/store/{hak_akses}', 'ManajemenUserController@store')->name('manajemen.user.store');
+
     Route::get('/manajemen-user/data-user/create', 'ManajemenUserController@create')->name('manajemen.user.create');
 
     Route::get('/manajemen-user/data-user/create/dosen', 'ManajemenUserController@createDosen')->name('manajemen.user.create.dosen');
