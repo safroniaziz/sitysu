@@ -27,7 +27,7 @@
                     <a href="{{ route('manajemen.user.create.dosen') }}">
                         <div class="img-box float-right">
                             <button class="btn btn-primary" style="margin-left: 150px;">Dosen</button>
-                            <img src="{{ asset('storage/menu/create-dosen.png') }}" class="img-fluid">
+                            <img src="{{ asset('assets/menu/create-dosen.png') }}" class="img-fluid">
                         </div>
                     </a>
                 </div>
@@ -35,7 +35,7 @@
                     <a href="{{ route('manajemen.user.create.staf') }}">
                         <button class="btn btn-primary" style="margin-left: 150px;">Staf TU</button>
                         <div class="img-box">
-                            <img src="{{ asset('storage/menu/create-staf.png') }}" class="img-fluid" style="margin-top: 0.8rem !important">
+                            <img src="{{ asset('assets/menu/create-staf.png') }}" class="img-fluid" style="margin-top: 0.8rem !important">
                         </div>
                     </a>
                 </div>

@@ -41,7 +41,7 @@
                         <a class="dropdown-item" wire:click.prevent="openModal({{ $user }})" style="cursor:pointer">Disable</a>
                     </div>
                 </div>
-                <img class="card-img-top" src="{{ asset('storage/foto-profil/user-default.jpg') }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/foto-profil/user-default.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h6 class="card-text"><b>Nama : {{ Str::limit($user->nama, 15) }}</b></h6>
                     <p class="text-muted">NIP/NIDN : {{ $user->nip }}</p>
