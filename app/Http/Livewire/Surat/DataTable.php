@@ -34,7 +34,7 @@ class DataTable extends Component
 
     public function render()
     {
-        if (auth()->user()->hak_akses == 'dosen') {
+        if (auth()->user()->hak_akses == 'dosen' || auth()->user()->hak_akses == 'staf' && auth()->user()->input_surat == 'tidak') {
             $documents = auth()->user()->surat()
                 ->search($this->search)
                 ->orderBy($this->sortBy, $this->sortDirection)

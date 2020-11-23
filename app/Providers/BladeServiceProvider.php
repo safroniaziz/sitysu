@@ -31,7 +31,11 @@ class BladeServiceProvider extends ServiceProvider
 
             if (Auth::user()) {
                 if (in_array(Auth::user()->hak_akses, $roles)) {
-                    return true;
+                    if (Auth::user()->hak_akses == 'staf' && Auth::user()->input_surat == 'tidak') {
+                        return false;
+                    } else {
+                        return true;
+                    }
                 }
             }
             return false;
