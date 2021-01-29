@@ -3,6 +3,12 @@
 @section('content')
 <h1 class="">Sign In</h1>
 <p class="">Log in to your account to continue.</p>
+@if (session()->has('error'))
+    <span class="alert alert-danger mb-4">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        <strong>Error!</strong> NIP / Password Anda Salah!</button>
+    </span>
+@endif
 @error('nip')
     <div class="alert alert-danger mb-4" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
@@ -10,7 +16,7 @@
     </div>
 @enderror
 
-    <form class="text-left" method="POST" action="{{ route('login') }}">
+    <form class="text-left" method="POST" action="{{ route('login.panda') }}">
         @csrf
         <div class="form">
 

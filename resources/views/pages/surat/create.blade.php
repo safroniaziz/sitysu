@@ -133,7 +133,7 @@
                                         <label for="penerima_surat">Penerima Surat <span class="red-star">*</span></label>
                                         <select class="js-example-basic-multiple" name="penerima_surat[]" multiple="multiple">
                                             @foreach ($users as $user)
-                                            <option value="{{ $user->id_user }}">{{ $user->nama }}</option>
+                                            <option value="{{ $user->nip }}">{{ $user->nama }}</option>
                                             @endforeach
                                         </select>
                                         @error('penerima_surat')

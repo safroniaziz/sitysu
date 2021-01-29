@@ -88,7 +88,7 @@
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button class="btn btn-primary" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Tidak</button>
-                        <button type="button" class="btn btn-danger" wire:click="disable({{ $id_user }})">Ya</button>
+                        <button type="button" class="btn btn-danger" wire:click="disable({{ $nip }})">Ya</button>
                     </div>
                 </div>
             </div>

@@ -14,12 +14,13 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->integer('id_user')->autoIncrement();
+            // $table->integer('id_user')->autoIncrement();
             $table->char('nip', 20);
+            $table->primary('nip');
             $table->string('nama', 100);
-            $table->enum('status', ['aktif', 'nonaktif']);
+            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->string('password', 255);
-            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('alamat', 100)->default('Bengkulu')->nullable();
             $table->string('no_hp', 15)->nullable();
             $table->string('nidn', 32)->nullable();

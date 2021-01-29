@@ -26,12 +26,12 @@ class CreateSuratTable extends Migration
             $table->string('link_download', 200);
             $table->string('pejabat', 100)->nullable();
             $table->string('jabatan_pejabat', 45)->nullable();
-            $table->integer('id_user');
+            $table->char('nip', 20);
             $table->timestamps();
         });
 
         Schema::table('surat', function (Blueprint $table) {
-            $table->foreign('id_user')->references('id_user')->on('users')
+            $table->foreign('nip')->references('nip')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

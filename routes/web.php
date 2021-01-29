@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['register' => false]);
+Auth::routes([
+    'register' => false,
+    'login' => false,
+]);
+
+Route::get('/login', 'AuthPandaController@index')->name('login');
+Route::post('/login', 'AuthPandaController@actionAuth')->name('login.panda');
 
 Route::middleware(['auth', 'checkRole:admin,dosen,staf'])->group(function () {
     Route::get('/', 'BerandaController@index')->name('beranda');

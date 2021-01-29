@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $primaryKey = 'id_user';
+    protected $primaryKey = 'nip';
 
     /**
      * The attributes that are mass assignable.
@@ -74,11 +74,11 @@ class User extends Authenticatable
 
     public function surat()
     {
-        return $this->belongsToMany(Surat::class, 'penerima_surat', 'id_user', 'id_surat');
+        return $this->belongsToMany(Surat::class, 'penerima_surat', 'nip', 'id_surat');
     }
 
     public function riwayatUnitKerja()
     {
-        return $this->hasOne(RiwayatUnitKerja::class, 'id_user');
+        return $this->hasOne(RiwayatUnitKerja::class, 'nip');
     }
 }

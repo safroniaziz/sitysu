@@ -11,15 +11,15 @@ class RiwayatUnitKerja extends Model
 
     protected $table = 'riwayat_unit_kerja';
 
-    protected $primaryKey = 'id_user';
+    protected $primaryKey = 'nip';
 
     protected $fillable = [
-        'id_user', 'id_unit_kerja', 'tanggal_berakhir', 'nip_pengubah'
+        'nip', 'id_unit_kerja', 'tanggal_berakhir', 'nip_pengubah'
     ];
 
     public function user()
     {
-        return $this->hasOne(User::class, 'id_user');
+        return $this->hasOne(User::class, 'nip');
     }
 
     public function unitKerja()

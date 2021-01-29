@@ -32,7 +32,7 @@ class SuratController extends Controller
         $id_file = $link[5];
 
         $data['link_download'] = 'https://drive.google.com/uc?export=download&id=' . $id_file;
-        $data['id_user'] = auth()->user()->id_user;
+        $data['nip'] = auth()->user()->nip;
 
         $surat = Surat::create($data);
 

@@ -37,7 +37,7 @@
                         </td>
                         <td class="text-center">
                             @if ($r->status == 'aktif')
-                            <div class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Nonaktifkan" wire:click="openModal({{ $r->id_user }})" style="cursor: pointer;">
+                            <div class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Nonaktifkan" wire:click="openModal({{ $r->nip }})" style="cursor: pointer;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e7515a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-slash"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
                             </div>
                             @else
@@ -79,7 +79,7 @@
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button class="btn btn-primary" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Tidak</button>
-                    <button type="button" class="btn btn-danger" wire:click="nonActive({{ $id_user }})">Ya</button>
+                    <button type="button" class="btn btn-danger" wire:click="nonActive({{ $nip }})">Ya</button>
                 </div>
             </div>
         </div>

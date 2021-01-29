@@ -129,7 +129,7 @@ class DataTable extends Component
         $data = UnitKerja::where('id_unit_kerja', $this->id_unit_kerja)->first();
 
         $data->delete();
-        $this->dispatchBrowserEvent('closeEditSatuanKerjaModal');
-        $this->dispatchBrowserEvent('swalEdited');
+        $this->dispatchBrowserEvent('closeDeleteSatuanKerjaModal');
+        $this->dispatchBrowserEvent('swalDeleted');
     }
 }

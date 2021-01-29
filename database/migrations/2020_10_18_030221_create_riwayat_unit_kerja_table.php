@@ -14,7 +14,7 @@ class CreateRiwayatUnitKerjaTable extends Migration
     public function up()
     {
         Schema::create('riwayat_unit_kerja', function (Blueprint $table) {
-            $table->integer('id_user', 20);
+            $table->char('nip', 20);
             $table->char('id_unit_kerja', 10);
             $table->date('tanggal_berakhir')->nullable();
             $table->char('nip_pengubah', 20);
@@ -25,7 +25,7 @@ class CreateRiwayatUnitKerjaTable extends Migration
         Schema::table('riwayat_unit_kerja', function (Blueprint $table) {
             // $table->primary('id_unit_kerja');
 
-            $table->foreign('id_user')->references('id_user')->on('users')
+            $table->foreign('nip')->references('nip')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 

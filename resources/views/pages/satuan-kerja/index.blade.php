@@ -92,7 +92,7 @@
         window.addEventListener('swalDeleted', event => {
             Swal.fire({
                 icon: 'success',
-                title: 'Data berhasil deleted',
+                title: 'Data berhasil di hapus',
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,

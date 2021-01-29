@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DataTable extends Component
 {
-    public $tanggal_berakhir, $nama_user, $id_user;
+    public $tanggal_berakhir, $nama_user, $nip;
 
     public function render()
     {
@@ -19,21 +19,21 @@ class DataTable extends Component
         return view('livewire.riwayat-unit-kerja.data-table', compact('riwayat_unit_kerja'));
     }
 
-    public function openModal($id_user)
+    public function openModal($nip)
     {
-        $user = User::where('id_user', $id_user)->first();
+        $user = User::where('nip', $nip)->first();
 
         $this->nama_user = $user->nama;
         $this->tanggal_berakhir = $user->riwayatUnitKerja->tanggal_berakhir;
-        $this->id_user = $user->id_user;
+        $this->nip = $user->nip;
 
         $this->dispatchBrowserEvent('openNonActiveUser');
     }
 
-    public function nonActive($id_user)
+    public function nonActive($nip)
     {
-        User::where('id_user', $id_user)->update(['input_surat' => 'tidak']);
-        RiwayatUnitKerja::where('id_user', $id_user)->update(['status' => 'tidak']);
+        User::where('nip', $nip)->update(['input_surat' => 'tidak']);
+        RiwayatUnitKerja::where('nip', $nip)->update(['status' => 'tidak']);
 
         $this->dispatchBrowserEvent('closeNonActiveUser');
     }

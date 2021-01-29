@@ -12,12 +12,12 @@ class BerandaController extends Controller
 {
     public function index()
     {
-        $id_user = Auth::id();
+        $nip = Auth::id();
 
         $surat_keputusan = Surat::where('jenis_surat', 'Surat Keputusan')->count();
         $surat_tugas = Surat::where('jenis_surat', 'Surat Tugas')->count();
 
-        $surat_user = PenerimaSurat::where('id_user', $id_user)->count();
+        $surat_user = PenerimaSurat::where('nip', $nip)->count();
 
         $jumlah_user = User::count();
         $user_aktif = User::where('status', 'aktif')->count();

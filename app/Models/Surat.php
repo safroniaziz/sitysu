@@ -15,7 +15,7 @@ class Surat extends Model
 
     protected $fillable = [
         'id_surat', 'no_surat', 'tentang', 'deskripsi_surat', 'jenis_surat', 'tanggal_surat', 'tanggal_mulai',
-        'tanggal_akhir', 'link_file', 'link_download', 'pejabat', 'jabatan_pejabat', 'id_user'
+        'tanggal_akhir', 'link_file', 'link_download', 'pejabat', 'jabatan_pejabat', 'nip'
     ];
 
     public function scopeSearch($query, $val)
@@ -28,6 +28,6 @@ class Surat extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'penerima_surat', 'id_surat', 'id_user');
+        return $this->belongsToMany(User::class, 'penerima_surat', 'id_surat', 'nip');
     }
 }
