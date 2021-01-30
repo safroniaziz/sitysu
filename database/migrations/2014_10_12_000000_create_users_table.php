@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('no_hp', 15)->nullable();
             $table->string('nidn', 32)->nullable();
             $table->char('id_unit_kerja', 10);
-            $table->enum('hak_akses', ['dosen', 'staff', 'admin'])->default('dosen');
+            $table->enum('hak_akses', ['dosen', 'staf', 'admin'])->default('dosen');
             $table->enum('input_surat', ['aktif', 'tidak'])->default('tidak');
             $table->string('foto_profil')->nullable();
             $table->rememberToken();

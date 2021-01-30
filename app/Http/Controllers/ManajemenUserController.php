@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\RiwayatUnitKerja;
 use App\Models\UnitKerja;
 use App\Models\User;
@@ -48,13 +49,14 @@ class ManajemenUserController extends Controller
         $user = User::create($data_user);
 
         if ($hak_akses == 'staf' && $request->input_surat == 'aktif') {
-            $data = new RiwayatUnitKerja;
+            $data = [];
 
-            $data->tanggal_berakhir = $request->tanggal_berakhir;
-            $data->nip_pengubah = $admin->nip;
-            $data->id_unit_kerja = $request->id_unit_kerja;
+            $data['nip'] = $request->nip;
+            $data['tanggal_berakhir'] = $request->tanggal_berakhir;
+            $data['nip_pengubah'] = $admin->nip;
+            $data['id_unit_kerja'] = $request->id_unit_kerja;
 
-            $user->riwayatUnitKerja()->save($data);
+            RiwayatUnitKerja::create($data);
         }
 
         return redirect()->route('manajemen.user')->with('success', 'Berhasil Ditambahkan.');
@@ -68,7 +70,7 @@ class ManajemenUserController extends Controller
         return view('pages.manajemen-user.edit', compact('user', 'unit_kerja'));
     }
 
-    public function update(UserRequest $request, $nip)
+    public function update(UserUpdateRequest $request, $nip)
     {
         $user = User::where('nip', $nip)->first();
 
