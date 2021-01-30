@@ -10,7 +10,7 @@ class DataCard extends Component
 {
     use WithPagination;
 
-    public $nama, $nip, $nip;
+    public $nama, $nip;
 
     public $search = '';
     public $filter = 'semua';

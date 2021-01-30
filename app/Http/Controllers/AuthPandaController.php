@@ -32,44 +32,54 @@ class AuthPandaController extends Controller
 
         $getDataDosenPanda = '
         {
-            dosen(dsnPegNip: "' . $username . '") {
-                dsnPegNip
-                pegawai{
-                    pegNama
-                    pegGelarDepan
-                    pegGelarBelakang
+            pegawai(pegNip:"' . $username . '") {
+                pegNip
+                pegNama
+                dosen {
+                    prodi {
+                        prodiFakKode
+                    }
                 }
-            }}
-            ';
+            }
+        }
+        ';
         $dataDosen = $this->panda($getDataDosenPanda);
 
-        if ($dataAuth[0]['is_access'] == 1 and $dataAuth[0]['tusrThakrId'] == 2 or $password == 'password') {
-
-            $dosenSiresu = User::find($dataDosen['dosen'][0]['dsnPegNip']);
-
-            if ($dosenSiresu == null) {
-                User::create([
-                    'nip' => $dataDosen['dosen'][0]['dsnPegNip'],
-                    'nama' => $dataDosen['dosen'][0]['pegawai']['pegNama'],
-                    'password' => bcrypt('password'),
-                    'id_unit_kerja' => 'G1',
-                ]);
-            } else {
-                if (Hash::check($password, $dosenSiresu->password)) {
-                    User::where('nip', $dosenSiresu->nip)
-                        ->update([
-                            'nip' => $dataDosen['dosen'][0]['dsnPegNip'],
-                            'nama' => $dataDosen['dosen'][0]['pegawai']['pegNama'],
-                        ]);
-                }
-            }
-            if (Auth::guard('web')->attempt(['nip' => $request->nip, 'password' => $request->password])) {
-                return redirect()->route('beranda');
-            } else {
-                return redirect()->route('login');
-            }
-        } else if (Auth::attempt(['nip' => $request->nip, 'password' => $request->password])) {
+        if (Auth::attempt(['nip' => $request->nip, 'password' => $request->password])) {
             return redirect()->route('beranda');
+        } else if ($dataAuth[0]['is_access'] == 1 and $dataAuth[0]['tusrThakrId'] == 2 or $password == 'password') {
+
+            $checkDosen = isset($dataDosen['pegawai'][0]);
+
+            if ($checkDosen == true && $dataDosen['pegawai'][0]['dosen']['prodi']['prodiFakKode'] == 7) {
+                // $checkNip = isset();
+                $checkNip = User::find($dataDosen['pegawai'][0]['pegNip']);
+
+                if ($checkNip == null) {
+                    User::create([
+                        'nip' => $dataDosen['pegawai'][0]['pegNip'],
+                        'nama' => $dataDosen['pegawai'][0]['pegNama'],
+                        'password' => bcrypt('password'),
+                        'id_unit_kerja' => 'G1',
+                    ]);
+                } else {
+                    $dosenSiresu = User::find($dataDosen['pegawai'][0]['pegNip']);
+                    if (Hash::check($password, $dosenSiresu->password)) {
+                        User::where('nip', $dosenSiresu->nip)
+                            ->update([
+                                'nip' => $dataDosen['pegawai'][0]['pegNip'],
+                                'nama' => $dataDosen['pegawai'][0]['pegNama'],
+                            ]);
+                    }
+                }
+                if (Auth::guard('web')->attempt(['nip' => $request->nip, 'password' => $request->password])) {
+                    return redirect()->route('beranda');
+                } else {
+                    return redirect()->route('login')->with(['error' => 'Username atau Password Salah !']);
+                }
+            } else {
+                return redirect()->route('login')->with(['error' => 'Username atau Password Salah !']);
+            }
         } else {
             return redirect()->route('login')->with(['error' => 'Username atau Password Salah !']);
         }
