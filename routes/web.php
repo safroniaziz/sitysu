@@ -21,7 +21,7 @@ Auth::routes([
 Route::get('/login', 'AuthPandaController@index')->name('login');
 Route::post('/login', 'AuthPandaController@actionAuth')->name('login.panda');
 
-Route::middleware(['auth', 'checkRole:admin,dosen,staf'])->group(function () {
+Route::middleware(['auth', 'checkRole:admin,staf'])->group(function () {
     Route::get('/', 'BerandaController@index')->name('beranda');
 
     Route::get('/profil', 'ProfileController@index')->name('profil');
